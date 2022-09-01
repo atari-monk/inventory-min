@@ -5,9 +5,10 @@ using Newtonsoft.Json;
 
 namespace Inventory.Min.Mvc.Web.App.Controllers;
 
-public class HomeController : Controller
+public class HomeController
+    : Controller
 {
-    private readonly InventoryApi api;
+    private readonly IApiClient api;
     private readonly ILogger<HomeController> logger;
 
     public HomeController(ILogger<HomeController> logger)
@@ -19,7 +20,7 @@ public class HomeController : Controller
     public async Task<IActionResult> Index()
     {
         var items = new List<Item>();
-        var client = api.Initial();
+        var client = api.GetClinet();
         var res = await client.GetAsync("api/items");
         if(res.IsSuccessStatusCode)
         {
