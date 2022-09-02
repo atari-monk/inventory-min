@@ -19,13 +19,13 @@ public class HomeController
 
     public async Task<IActionResult> Index()
     {
-        var items = new List<Item>();
+        var items = new List<ItemVM>();
         var client = api.GetClinet();
         var res = await client.GetAsync("api/items");
         if(res.IsSuccessStatusCode)
         {
             var result = res.Content.ReadAsStringAsync().Result;
-            items = JsonConvert.DeserializeObject<List<Item>>(result);
+            items = JsonConvert.DeserializeObject<List<ItemVM>>(result);
         }
         return View(items);
     }

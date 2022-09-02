@@ -1,6 +1,6 @@
 namespace Inventory.Min.Mvc.Web.App.Models;
 
-public class Item
+public class ItemVM
 {
     public int Id { get; set; }
 
