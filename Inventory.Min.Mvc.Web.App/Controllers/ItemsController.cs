@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Inventory.Min.Mvc.Web.App.Models;
-using Newtonsoft.Json;
 
 namespace Inventory.Min.Mvc.Web.App.Controllers;
 
-public class ItemsController : Controller
+public class ItemsController
+    : Controller
 {
     private readonly IApiClient api;
 
@@ -17,34 +17,21 @@ public class ItemsController : Controller
     // GET: Items
     public async Task<IActionResult> Index()
     {
-        var items = new List<ItemVM>();
         var client = api.GetClinet();
-        var res = await client.GetAsync("api/items");
-        if(res.IsSuccessStatusCode)
-        {
-            var result = res.Content.ReadAsStringAsync().Result;
-            items = JsonConvert.DeserializeObject<List<ItemVM>>(result);
-        }
+        var items = await api.GetItemsAsync(client);
         return View(items);
     }
 
     // GET: Items/Details/5
     public async Task<IActionResult> Details(int? id)
     {
-        ItemVM? itemVM = default;
         var client = api.GetClinet();
-        var item = await client.GetAsync("api/items/" + id);
-        if(item.IsSuccessStatusCode)
-        {
-            var result = item.Content.ReadAsStringAsync().Result;
-            itemVM = JsonConvert.DeserializeObject<ItemVM>(result);
-        }
-        if (id == null || itemVM == null)
+        var item = await api.GetItemAsync(client, id);
+        if (id == null || item == null)
         {
             return NotFound();
         }
-
-        return View(itemVM);
+        return View(item);
     }
 
     // GET: Items/Create
@@ -70,17 +57,17 @@ public class ItemsController : Controller
     // GET: Items/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
-        // if (id == null || _context.ItemVM == null)
-        // {
-        //     return NotFound();
-        // }
-
-        // var itemVM = await _context.ItemVM.FindAsync(id);
-        // if (itemVM == null)
-        // {
-        //     return NotFound();
-        // }
-        return View(new ItemVM());
+        if (id == null)
+        {
+            return NotFound();
+        }
+        var client = api.GetClinet();
+        var item = await api.GetItemAsync(client, id);
+        if (item == null)
+        {
+            return NotFound();
+        }
+        return View(item);
     }
 
     // POST: Items/Edit/5
@@ -99,8 +86,8 @@ public class ItemsController : Controller
         {
             try
             {
-                //_context.Update(itemVM);
-                //await _context.SaveChangesAsync();
+                var client = api.GetClinet();
+                await api.UpdateItemAsync(client, itemVM);
             }
             catch (DbUpdateConcurrencyException)
             {

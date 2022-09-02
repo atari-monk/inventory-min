@@ -4,3 +4,5 @@ dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet-aspnet-codegenerator controller -name ItemsController -m ItemVM -dc InventoryDbContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+
+dotnet add package Microsoft.AspNet.WebApi.Client
