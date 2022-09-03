@@ -91,7 +91,7 @@ public class ItemsController
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ItemVMExists(itemVM.Id))
+                if (await ItemVMExists(itemVM.Id) == false)
                 {
                     return NotFound();
                 }
@@ -108,19 +108,17 @@ public class ItemsController
     // GET: Items/Delete/5
     public async Task<IActionResult> Delete(int? id)
     {
-        // if (id == null || _context.ItemVM == null)
-        // {
-        //     return NotFound();
-        // }
-
-        // var itemVM = await _context.ItemVM
-        //     .FirstOrDefaultAsync(m => m.Id == id);
-        // if (itemVM == null)
-        // {
-        //     return NotFound();
-        // }
-
-        return View(new ItemVM());
+        if (id == null)
+        {
+            return NotFound();
+        }
+        var client = api.GetClinet();
+        var item = await api.GetItemAsync(client, id);
+        if (item == null)
+        {
+            return NotFound();
+        }
+        return View(item);
     }
 
     // POST: Items/Delete/5
@@ -128,22 +126,23 @@ public class ItemsController
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        // if (_context.ItemVM == null)
-        // {
-        //     return Problem("Entity set 'InventoryDbContext.ItemVM'  is null.");
-        // }
-        // var itemVM = await _context.ItemVM.FindAsync(id);
-        // if (itemVM != null)
-        // {
-        //     _context.ItemVM.Remove(itemVM);
-        // }
-        
-        // await _context.SaveChangesAsync();
+        var client = api.GetClinet();
+        var item = await api.GetItemAsync(client, id);
+        if (item != null)
+        {
+            await api.DeleteItemAsync(client, item.Id.ToString());
+        }
         return RedirectToAction(nameof(Index));
     }
 
-    private bool ItemVMExists(int id)
+    private async Task<bool> ItemVMExists(int id)
     {
-      return false;//(_context.ItemVM?.Any(e => e.Id == id)).GetValueOrDefault();
+        var client = api.GetClinet();
+        var item = await api.GetItemAsync(client, id);
+        if (item == null)
+        {
+            return false;
+        }
+        return true;
     }
 }

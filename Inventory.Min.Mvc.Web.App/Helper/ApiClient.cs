@@ -1,3 +1,4 @@
+using System.Net;
 using Inventory.Min.Mvc.Web.App.Models;
 using Newtonsoft.Json;
 
@@ -60,5 +61,11 @@ public abstract class ApiClient
         // Deserialize the updated item from the response body.
         item = await response.Content.ReadAsAsync<ItemVM>();
         return item;
+    }
+
+    public async Task<HttpStatusCode> DeleteItemAsync(HttpClient client, string id)
+    {
+        var response = await client.DeleteAsync($"api/items/{id}");
+        return response.StatusCode;
     }
 }
