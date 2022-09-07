@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Inventory.Min.Mvc.Web.App.Models;
+using System.Diagnostics;
 
 namespace Inventory.Min.Mvc.Web.App.Controllers;
 
@@ -144,5 +145,16 @@ public class ItemsController
             return false;
         }
         return true;
+    }
+
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
