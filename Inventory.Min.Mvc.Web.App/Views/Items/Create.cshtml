@@ -6,7 +6,7 @@
 
 <h1>Create</h1>
 
-<h4>ItemVM</h4>
+<h4>Item</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -21,6 +21,36 @@
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InitialCount" class="control-label"></label>
+                <input asp-for="InitialCount" class="form-control" />
+                <span asp-validation-for="InitialCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentCount" class="control-label"></label>
+                <input asp-for="CurrentCount" class="form-control" />
+                <span asp-validation-for="CurrentCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <input asp-for="CategoryId" class="form-control" />
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PurchaseDate" class="control-label"></label>
+                <input asp-for="PurchaseDate" class="form-control" />
+                <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrencyId" class="control-label"></label>
+                <input asp-for="CurrencyId" class="form-control" />
+                <span asp-validation-for="CurrencyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PurchasePrice" class="control-label"></label>
+                <input asp-for="PurchasePrice" class="form-control" />
+                <span asp-validation-for="PurchasePrice" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
