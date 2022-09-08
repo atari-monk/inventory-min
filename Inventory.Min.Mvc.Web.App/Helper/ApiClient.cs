@@ -68,4 +68,16 @@ public abstract class ApiClient
         var response = await client.DeleteAsync($"api/items/{id}");
         return response.StatusCode;
     }
+
+    public async Task<List<CategoryVM>> GetCategoriesAsync(HttpClient client)
+    {
+        var categories = new List<CategoryVM>();
+        var response = await client.GetAsync("api/categories");
+        if(response.IsSuccessStatusCode)
+        {
+            var result = response.Content.ReadAsStringAsync().Result;
+            categories = JsonConvert.DeserializeObject<List<CategoryVM>>(result);
+        }
+        return categories!;
+    }
 }

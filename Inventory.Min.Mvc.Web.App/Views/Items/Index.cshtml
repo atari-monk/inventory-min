@@ -1,4 +1,4 @@
-@model IEnumerable<Inventory.Min.Mvc.Web.App.Models.ItemVM>
+@model Inventory.Min.Mvc.Web.App.Models.ItemFullVM
 
 @{
     ViewData["Title"] = "Home Page";
@@ -6,10 +6,10 @@
 
 <h1>Items</h1>
 
-<div class="text-center">
+@* <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+</div> *@
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -19,24 +19,24 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                @Html.DisplayName(nameof(ItemVM.Id))
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayName(nameof(ItemVM.Name))
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayName(nameof(ItemVM.Description))
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.InitialCount)
+                @Html.Raw("Initial<br/>Count")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CurrentCount)
+                @Html.Raw("Current<br/>Count")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CategoryId)
+                @Html.Raw("Category<br/>Name")
             </th>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.PurchaseDate)
             </th>
             <th>
@@ -45,11 +45,53 @@
             <th>
                 @Html.DisplayNameFor(model => model.PurchasePrice)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SellPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LengthUnitId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Heigth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Depth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diameter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VolumeUnitId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Volume)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MassUnitId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TagId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StateId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentId)
+            </th> *@
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Items!)
         {
             <tr>
                 <td>
@@ -68,9 +110,9 @@
                     @Html.DisplayFor(modelItem => item.CurrentCount)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CategoryId)
+                    @Html.DisplayFor(modelItem => modelItem.Categories!.FirstOrDefault(c => c.Id == item.CategoryId)!.Name)
                 </td>
-                <td>
+                @* <td>
                     @Html.DisplayFor(modelItem => item.PurchaseDate)
                 </td>
                 <td>
@@ -79,6 +121,48 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.PurchasePrice)
                 </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SellPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImagePath)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LengthUnitId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Length)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Heigth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Depth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diameter)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VolumeUnitId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Volume)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mass)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MassUnitId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TagId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StateId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParentId)
+                </td> *@
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

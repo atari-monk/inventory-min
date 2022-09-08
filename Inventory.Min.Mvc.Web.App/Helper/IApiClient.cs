@@ -11,4 +11,6 @@ public interface IApiClient
     Task<Uri> CreateItemAsync(HttpClient client, ItemVM item);
     Task<ItemVM> UpdateItemAsync(HttpClient client, ItemVM item);
     Task<HttpStatusCode> DeleteItemAsync(HttpClient client, string id);
+
+    Task<List<CategoryVM>> GetCategoriesAsync(HttpClient client);
 }

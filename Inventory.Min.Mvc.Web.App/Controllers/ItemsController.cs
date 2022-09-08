@@ -19,8 +19,10 @@ public class ItemsController
     public async Task<IActionResult> Index()
     {
         var client = api.GetClinet();
-        var items = await api.GetItemsAsync(client);
-        return View(items);
+        var fullModel = new ItemFullVM();
+        fullModel.Items = await api.GetItemsAsync(client);
+        fullModel.Categories = await api.GetCategoriesAsync(client);
+        return View(fullModel);
     }
 
     // GET: Items/Details/5
