@@ -1,10 +1,12 @@
+//use code generator to see how structure was defined
 dotnet tool install -g dotnet-aspnet-codegenerator
 dotnet tool update -g dotnet-aspnet-codegenerator
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet-aspnet-codegenerator controller -name ItemsController -m ItemVM -dc InventoryDbContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
-
+//framework lib
 dotnet add package Microsoft.AspNet.WebApi.Client
-
-https://www.cssscript.com/dark-mode-switcher-bootstrap/#google_vignette
+//to add css for dark mode simple way
+https://www.youtube.com/watch?v=-n1CQsif0zQ
+https://bootswatch.com/slate/
