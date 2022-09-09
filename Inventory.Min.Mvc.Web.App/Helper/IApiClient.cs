@@ -13,4 +13,5 @@ public interface IApiClient
     Task<HttpStatusCode> DeleteItemAsync(HttpClient client, string id);
 
     Task<List<CategoryVM>> GetCategoriesAsync(HttpClient client);
+    Task<List<CurrencyVM>> GetCurrenciesAsync(HttpClient client);
 }

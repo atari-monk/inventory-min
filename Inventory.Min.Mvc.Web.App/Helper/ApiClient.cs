@@ -80,4 +80,16 @@ public abstract class ApiClient
         }
         return categories!;
     }
+
+    public async Task<List<CurrencyVM>> GetCurrenciesAsync(HttpClient client)
+    {
+        var currencies = new List<CurrencyVM>();
+        var response = await client.GetAsync("api/currencies");
+        if(response.IsSuccessStatusCode)
+        {
+            var result = response.Content.ReadAsStringAsync().Result;
+            currencies = JsonConvert.DeserializeObject<List<CurrencyVM>>(result);
+        }
+        return currencies!;
+    }
 }

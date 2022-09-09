@@ -6,5 +6,6 @@ public class ItemFullVM
     : Model
 {
     public List<CategoryVM>? Categories { get; set; }
+    public List<CurrencyVM>? Currencies { get; set; }
     public List<ItemVM>? Items { get; set; }
 }

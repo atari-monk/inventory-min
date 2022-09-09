@@ -38,11 +38,11 @@
             </th>
             @* <th>
                 @Html.DisplayNameFor(model => model.PurchaseDate)
-            </th>
+            </th> *@
             <th>
-                @Html.DisplayNameFor(model => model.CurrencyId)
+                @Html.Raw("Currency<br/>Name")
             </th>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.PurchasePrice)
             </th>
             <th>
@@ -114,11 +114,11 @@
                 </td>
                 @* <td>
                     @Html.DisplayFor(modelItem => item.PurchaseDate)
-                </td>
+                </td> *@
                 <td>
-                    @Html.DisplayFor(modelItem => item.CurrencyId)
+                    @Html.DisplayFor(modelItem => modelItem.Currencies!.FirstOrDefault(c => c.Id == item.CurrencyId)!.Name)
                 </td>
-                <td>
+                @* <td>
                     @Html.DisplayFor(modelItem => item.PurchasePrice)
                 </td>
                 <td>

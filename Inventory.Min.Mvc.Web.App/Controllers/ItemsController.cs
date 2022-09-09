@@ -22,6 +22,7 @@ public class ItemsController
         var fullModel = new ItemFullVM();
         fullModel.Items = await api.GetItemsAsync(client);
         fullModel.Categories = await api.GetCategoriesAsync(client);
+        fullModel.Currencies = await api.GetCurrenciesAsync(client);
         return View(fullModel);
     }
 
