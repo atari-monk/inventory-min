@@ -5,8 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Inventory.Min.Mvc.Web.App</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-slate.css" />
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Inventory.Min.Mvc.Web.App.styles.css" asp-append-version="true" />
+    <style>
+        .body-container {
+            /*remove the container default padding attribute*/
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+            /*increase width as per your need*/
+            max-width: 100%;
+        }
+        col-width-set {
+            width: 100px !important;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -30,7 +43,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container body-container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

@@ -24,6 +24,8 @@ public class ItemsController
         fullModel.Categories = await api.GetCategoriesAsync(client);
         fullModel.Currencies = await api.GetCurrenciesAsync(client);
         fullModel.States = await api.GetStatesAsync(client);
+        fullModel.Tags = await api.GetTagsAsync(client);
+        fullModel.Units = await api.GetUnitsAsync(client);
         return View(fullModel);
     }
 

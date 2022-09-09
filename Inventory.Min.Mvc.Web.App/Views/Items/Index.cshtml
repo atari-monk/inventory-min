@@ -9,7 +9,7 @@
 @* <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div> *@
+    </div> *@
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -36,57 +36,57 @@
             <th>
                 @Html.Raw("Category<br/>Name")
             </th>
-            @* <th>
-                @Html.DisplayNameFor(model => model.PurchaseDate)
-            </th> *@
+            <th>
+                @Html.Raw("Purchase<br/>Date")
+            </th>
             <th>
                 @Html.Raw("Currency<br/>Name")
             </th>
-            @* <th>
-                @Html.DisplayNameFor(model => model.PurchasePrice)
+            <th>
+                @Html.Raw("Purchase<br/>Price")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SellPrice)
+                @Html.Raw("Sell<br/>Price")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImagePath)
+                @Html.Raw("Image<br/>Path")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LengthUnitId)
+                @Html.Raw("Length<br/>Unit")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Length)
+                @Html.Raw("Length")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Heigth)
+                @Html.Raw("Heigth")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Depth)
+                @Html.Raw("Depth")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Diameter)
+                @Html.Raw("Diameter")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.VolumeUnitId)
+                @Html.Raw("Volume<br/>Unit")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Volume)
+                @Html.Raw("Volume")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Mass)
+                @Html.Raw("Mass")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MassUnitId)
+                @Html.Raw("Mass<br/>Unit")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TagId)
-            </th> *@
+                @Html.Raw("Tag<br/>Name")
+            </th>
             <th>
                 @Html.Raw("State<br/>Name")
             </th>
             @* <th>
                 @Html.DisplayNameFor(model => model.ParentId)
-            </th> *@
+                </th> *@
             <th></th>
         </tr>
     </thead>
@@ -112,23 +112,23 @@
                 <td>
                     @Html.DisplayFor(modelItem => modelItem.Categories!.FirstOrDefault(c => c.Id == item.CategoryId)!.Name)
                 </td>
-                @* <td>
+                <td>
                     @Html.DisplayFor(modelItem => item.PurchaseDate)
-                </td> *@
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => modelItem.Currencies!.FirstOrDefault(c => c.Id == item.CurrencyId)!.Name)
                 </td>
-                @* <td>
+                <td>
                     @Html.DisplayFor(modelItem => item.PurchasePrice)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.SellPrice)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ImagePath)
+                    @Html.DisplayFor(modelItem => item.ImagePath17)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.LengthUnitId)
+                    @Html.DisplayFor(modelItem => modelItem.Units!.FirstOrDefault(c => c.Id == item.LengthUnitId)!.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Length)
@@ -143,7 +143,7 @@
                     @Html.DisplayFor(modelItem => item.Diameter)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.VolumeUnitId)
+                    @Html.DisplayFor(modelItem => modelItem.Units!.FirstOrDefault(c => c.Id == item.VolumeUnitId)!.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Volume)
@@ -152,17 +152,17 @@
                     @Html.DisplayFor(modelItem => item.Mass)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MassUnitId)
+                    @Html.DisplayFor(modelItem => modelItem.Units!.FirstOrDefault(c => c.Id == item.MassUnitId)!.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TagId)
-                </td> *@
+                    @Html.DisplayFor(modelItem => modelItem.Tags!.FirstOrDefault(c => c.Id == item.TagId)!.Name)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => modelItem.States!.FirstOrDefault(c => c.Id == item.StateId)!.Name)
                 </td>
                 @* <td>
                     @Html.DisplayFor(modelItem => item.ParentId)
-                </td> *@
+                    </td> *@
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

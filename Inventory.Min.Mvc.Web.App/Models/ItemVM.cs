@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Inventory.Min.Data;
 using ModelHelper;
+using Redwerb.BizArk.Core.StringExt;
 
 namespace Inventory.Min.Mvc.Web.App.Models;
 
@@ -38,6 +39,9 @@ public class ItemVM
 
     [MaxLength(PathMax)]
 	public string? ImagePath { get; set; }
+
+    [MaxLength(PathMax)]
+	public string? ImagePath17 => ImagePath?.Wrap(17);
 
     [ForeignKey(nameof(Unit))]
 	public int? LengthUnitId { get; set; }

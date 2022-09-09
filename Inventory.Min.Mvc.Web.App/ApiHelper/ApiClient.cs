@@ -95,13 +95,37 @@ public abstract class ApiClient
 
     public async Task<List<StateVM>> GetStatesAsync(HttpClient client)
     {
-        var currencies = new List<StateVM>();
+        var states = new List<StateVM>();
         var response = await client.GetAsync("api/states");
         if(response.IsSuccessStatusCode)
         {
             var result = response.Content.ReadAsStringAsync().Result;
-            currencies = JsonConvert.DeserializeObject<List<StateVM>>(result);
+            states = JsonConvert.DeserializeObject<List<StateVM>>(result);
         }
-        return currencies!;
+        return states!;
+    }
+
+    public async Task<List<TagVM>> GetTagsAsync(HttpClient client)
+    {
+        var tags = new List<TagVM>();
+        var response = await client.GetAsync("api/tags");
+        if(response.IsSuccessStatusCode)
+        {
+            var result = response.Content.ReadAsStringAsync().Result;
+            tags = JsonConvert.DeserializeObject<List<TagVM>>(result);
+        }
+        return tags!;
+    }
+
+    public async Task<List<UnitVM>> GetUnitsAsync(HttpClient client)
+    {
+        var units = new List<UnitVM>();
+        var response = await client.GetAsync("api/units");
+        if(response.IsSuccessStatusCode)
+        {
+            var result = response.Content.ReadAsStringAsync().Result;
+            units = JsonConvert.DeserializeObject<List<UnitVM>>(result);
+        }
+        return units!;
     }
 }
