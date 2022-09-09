@@ -23,6 +23,7 @@ public class ItemsController
         fullModel.Items = await api.GetItemsAsync(client);
         fullModel.Categories = await api.GetCategoriesAsync(client);
         fullModel.Currencies = await api.GetCurrenciesAsync(client);
+        fullModel.States = await api.GetStatesAsync(client);
         return View(fullModel);
     }
 

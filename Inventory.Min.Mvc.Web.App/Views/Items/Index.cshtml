@@ -80,11 +80,11 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TagId)
-            </th>
+            </th> *@
             <th>
-                @Html.DisplayNameFor(model => model.StateId)
+                @Html.Raw("State<br/>Name")
             </th>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.ParentId)
             </th> *@
             <th></th>
@@ -156,11 +156,11 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TagId)
-                </td>
+                </td> *@
                 <td>
-                    @Html.DisplayFor(modelItem => item.StateId)
+                    @Html.DisplayFor(modelItem => modelItem.States!.FirstOrDefault(c => c.Id == item.StateId)!.Name)
                 </td>
-                <td>
+                @* <td>
                     @Html.DisplayFor(modelItem => item.ParentId)
                 </td> *@
                 <td>

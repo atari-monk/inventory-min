@@ -14,4 +14,5 @@ public interface IApiClient
 
     Task<List<CategoryVM>> GetCategoriesAsync(HttpClient client);
     Task<List<CurrencyVM>> GetCurrenciesAsync(HttpClient client);
+    Task<List<StateVM>> GetStatesAsync(HttpClient client);
 }
