@@ -17,4 +17,5 @@ public interface IApiClient
     Task<List<StateVM>> GetStatesAsync(HttpClient client);
     Task<List<TagVM>> GetTagsAsync(HttpClient client);
     Task<List<UnitVM>> GetUnitsAsync(HttpClient client);
+    Task<LexiconsVM> GetLexicinsAsync(HttpClient client);
 }

@@ -64,6 +64,18 @@ public class ItemsController
     // GET: Items/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
+        // if (id == null)
+        // {
+        //     return NotFound();
+        // }
+        // var client = api.GetClinet();
+        // var item = await api.GetItemAsync(client, id);
+        // if (item == null)
+        // {
+        //     return NotFound();
+        // }
+        // return View(item);
+
         if (id == null)
         {
             return NotFound();
@@ -74,7 +86,10 @@ public class ItemsController
         {
             return NotFound();
         }
-        return View(item);
+        var fullModel = new ItemEditFullVM();
+        fullModel.Item = item;
+        fullModel.Lexicons = await api.GetLexicinsAsync(client);
+        return View(fullModel);
     }
 
     // POST: Items/Edit/5

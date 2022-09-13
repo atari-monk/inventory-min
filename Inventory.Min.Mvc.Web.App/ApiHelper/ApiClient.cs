@@ -30,6 +30,17 @@ public abstract class ApiClient
         return items!;
     }
 
+    public async Task<LexiconsVM> GetLexicinsAsync(HttpClient client)
+    {
+        var item = new LexiconsVM();
+        item.Categories = await GetCategoriesAsync(client);
+        item.Currencies = await GetCurrenciesAsync(client);
+        item.States = await GetStatesAsync(client);
+        item.Tags = await GetTagsAsync(client);
+        item.Units = await GetUnitsAsync(client);
+        return item;
+    }
+
     public async Task<ItemVM> GetItemAsync(HttpClient client, int? id)
     {
         ItemVM? itemVM = default;
