@@ -19,7 +19,7 @@ public class ItemsController
     public async Task<IActionResult> Index()
     {
         var client = api.GetClinet();
-        var fullModel = new ItemFullVM();
+        var fullModel = new ItemsFullVM();
         fullModel.Items = await api.GetItemsAsync(client);
         fullModel.Categories = await api.GetCategoriesAsync(client);
         fullModel.Currencies = await api.GetCurrenciesAsync(client);
@@ -42,9 +42,13 @@ public class ItemsController
     }
 
     // GET: Items/Create
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
-        return View();
+        var fullModel = new ItemFullVM();
+        fullModel.Item = new ItemVM();
+        var client = api.GetClinet();
+        fullModel.Lexicons = await api.GetLexicinsAsync(client);
+        return View(fullModel);
     }
 
     // POST: Items/Create
@@ -52,12 +56,18 @@ public class ItemsController
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Name,Description")] ItemVM itemVM)
+    public async Task<IActionResult> Create(ItemFullVM itemContext)
     {
+        // if (ModelState.IsValid == false)
+        //     return View(itemVM);
+        // var client = api.GetClinet();
+        // await api.CreateItemAsync(client, itemVM);
+        // return RedirectToAction(nameof(Index));
+
         if (ModelState.IsValid == false)
-            return View(itemVM);
+            return View(itemContext.Item);
         var client = api.GetClinet();
-        await api.CreateItemAsync(client, itemVM);
+        await api.CreateItemAsync(client, itemContext.Item!);
         return RedirectToAction(nameof(Index));
     }
 
@@ -86,7 +96,7 @@ public class ItemsController
         {
             return NotFound();
         }
-        var fullModel = new ItemEditFullVM();
+        var fullModel = new ItemFullVM();
         fullModel.Item = item;
         fullModel.Lexicons = await api.GetLexicinsAsync(client);
         return View(fullModel);

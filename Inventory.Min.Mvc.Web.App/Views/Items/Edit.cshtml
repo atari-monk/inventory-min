@@ -1,4 +1,4 @@
-@model Inventory.Min.Mvc.Web.App.Models.ItemEditFullVM
+@model Inventory.Min.Mvc.Web.App.Models.ItemFullVM
 
 @{
     ViewData["Title"] = "Edit";
@@ -12,19 +12,44 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Item.Id" />
+            <input type="hidden" asp-for="Item!.Id" />
             <div class="form-group">
-                <label asp-for="Item.Name" class="control-label"></label>
-                <input asp-for="Item.Name" class="form-control" />
-                <span asp-validation-for="Item.Name" class="text-danger"></span>
+                <label asp-for="Item!.Name" class="control-label"></label>
+                <input asp-for="Item!.Name" class="form-control" />
+                <span asp-validation-for="Item!.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Item.Description" class="control-label"></label>
-                <input asp-for="Item.Description" class="form-control" />
-                <span asp-validation-for="Item.Description" class="text-danger"></span>
+                <label asp-for="Item!.Description" class="control-label"></label>
+                <input asp-for="Item!.Description" class="form-control" />
+                <span asp-validation-for="Item!.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Item!.CategoryId">Category</label>
                 @Html.DropDownListFor(m => m.Item!.CategoryId, new SelectList(Model.Lexicons!.Categories, "Id", "Name"))
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.CurrencyId">Currency</label>
+                @Html.DropDownListFor(m => m.Item!.CurrencyId, new SelectList(Model.Lexicons!.Currencies, "Id", "Name"))
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.LengthUnitId">Length Unit</label>
+                @Html.DropDownListFor(m => m.Item!.LengthUnitId, new SelectList(Model.Lexicons!.Units, "Id", "Name"))
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.VolumeUnitId">Volume Unit</label>
+                @Html.DropDownListFor(m => m.Item!.VolumeUnitId, new SelectList(Model.Lexicons!.Units, "Id", "Name"))
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.MassUnitId">Mass Unit</label>
+                @Html.DropDownListFor(m => m.Item!.MassUnitId, new SelectList(Model.Lexicons!.Units, "Id", "Name"))
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.TagId">Tag</label>
+                @Html.DropDownListFor(m => m.Item!.TagId, new SelectList(Model.Lexicons!.Tags, "Id", "Name"))
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.StateId">State</label>
+                @Html.DropDownListFor(m => m.Item!.StateId, new SelectList(Model.Lexicons!.States, "Id", "Name"))
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -38,5 +63,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
