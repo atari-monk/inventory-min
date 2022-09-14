@@ -34,11 +34,13 @@ public class ItemsController
     {
         var client = api.GetClinet();
         var item = await api.GetItemAsync(client, id);
-        if (id == null || item == null)
+        var lexicons = await api.GetLexicinsAsync(client);
+        if (id == null || item == null || lexicons == null)
         {
             return NotFound();
         }
-        return View(item);
+        var fullItem = new ItemFullVM{ Item = item, Lexicons = lexicons };
+        return View(fullItem);
     }
 
     // GET: Items/Create
