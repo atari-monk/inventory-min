@@ -27,12 +27,33 @@ public abstract class ApiClient
             var result = response.Content.ReadAsStringAsync().Result;
             items = JsonConvert.DeserializeObject<List<ItemVM>>(result);
         }
+        SetParentNames(items!);
         return items!;
     }
 
-    public async Task<LexiconsVM> GetLexicinsAsync(HttpClient client)
+    public async Task<List<ItemSmallVM>> GetSmallItemsAsync(HttpClient client)
     {
-        var item = new LexiconsVM();
+        var items = new List<ItemSmallVM>();
+        var response = await client.GetAsync("api/items");
+        if(response.IsSuccessStatusCode)
+        {
+            var result = response.Content.ReadAsStringAsync().Result;
+            items = JsonConvert.DeserializeObject<List<ItemSmallVM>>(result);
+        }
+        return items!;
+    }
+
+    private void SetParentNames(List<ItemVM> items)
+    {
+        foreach (var item in items)
+        {
+            item.ParentName = items.FirstOrDefault(p => p.Id == item.ParentId)?.Name;
+        }
+    }
+
+    public async Task<LexiconVM> GetLexicinsAsync(HttpClient client)
+    {
+        var item = new LexiconVM();
         item.Categories = await GetCategoriesAsync(client);
         item.Currencies = await GetCurrenciesAsync(client);
         item.States = await GetStatesAsync(client);

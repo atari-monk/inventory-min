@@ -84,9 +84,9 @@
             <th>
                 @Html.Raw("State<br/>Name")
             </th>
-            @* <th>
-                @Html.DisplayNameFor(model => model.ParentId)
-                </th> *@
+            <th>
+                @Html.Raw("Parent")
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -160,9 +160,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => modelItem.States!.FirstOrDefault(c => c.Id == item.StateId)!.Name)
                 </td>
-                @* <td>
-                    @Html.DisplayFor(modelItem => item.ParentId)
-                    </td> *@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParentName)
+                </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

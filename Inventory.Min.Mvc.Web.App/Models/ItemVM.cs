@@ -72,4 +72,6 @@ public class ItemVM
 
     [ForeignKey(nameof(Item))]
 	public int? ParentId { get; set; }
+
+	public string? ParentName { get; set; }
 }

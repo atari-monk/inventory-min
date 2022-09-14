@@ -1,4 +1,4 @@
-@model Inventory.Min.Mvc.Web.App.Models.ItemFullVM
+@model Inventory.Min.Mvc.Web.App.Models.ItemCreateVM
 
 @{
     ViewData["Title"] = "Create";
@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Item!.CategoryId">Category</label>
-                @Html.DropDownListFor(m => m.Item!.CategoryId, new SelectList(Model.Lexicons!.Categories, "Id", "Name"))
+                @Html.DropDownListFor(m => m.Item!.CategoryId, new SelectList(Model.Lexicon!.Categories, "Id", "Name"))
             </div>
             <div class="form-group">
                 <label asp-for="Item!.PurchaseDate" class="control-label"></label>
@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Item!.CurrencyId">Currency</label>
-                @Html.DropDownListFor(m => m.Item!.CurrencyId, new SelectList(Model.Lexicons!.Currencies, "Id", "Name"))
+                @Html.DropDownListFor(m => m.Item!.CurrencyId, new SelectList(Model.Lexicon!.Currencies, "Id", "Name"))
             </div>
             <div class="form-group">
                 <label asp-for="Item!.PurchasePrice" class="control-label"></label>
@@ -62,7 +62,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Item!.LengthUnitId">Length Unit</label>
-                @Html.DropDownListFor(m => m.Item!.LengthUnitId, new SelectList(Model.Lexicons!.Units, "Id", "Name"))
+                @Html.DropDownListFor(m => m.Item!.LengthUnitId, new SelectList(Model.Lexicon!.Units, "Id", "Name"))
             </div>
             <div class="form-group">
                 <label asp-for="Item!.Length" class="control-label"></label>
@@ -86,7 +86,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Item!.VolumeUnitId">Volume Unit</label>
-                @Html.DropDownListFor(m => m.Item!.VolumeUnitId, new SelectList(Model.Lexicons!.Units, "Id", "Name"))
+                @Html.DropDownListFor(m => m.Item!.VolumeUnitId, new SelectList(Model.Lexicon!.Units, "Id", "Name"))
             </div>
             <div class="form-group">
                 <label asp-for="Item!.Volume" class="control-label"></label>
@@ -100,15 +100,19 @@
             </div>
             <div class="form-group">
                 <label asp-for="Item!.MassUnitId">Mass Unit</label>
-                @Html.DropDownListFor(m => m.Item!.MassUnitId, new SelectList(Model.Lexicons!.Units, "Id", "Name"))
+                @Html.DropDownListFor(m => m.Item!.MassUnitId, new SelectList(Model.Lexicon!.Units, "Id", "Name"))
             </div>
             <div class="form-group">
                 <label asp-for="Item!.TagId">Tag</label>
-                @Html.DropDownListFor(m => m.Item!.TagId, new SelectList(Model.Lexicons!.Tags, "Id", "Name"))
+                @Html.DropDownListFor(m => m.Item!.TagId, new SelectList(Model.Lexicon!.Tags, "Id", "Name"))
             </div>
             <div class="form-group">
                 <label asp-for="Item!.StateId">State</label>
-                @Html.DropDownListFor(m => m.Item!.StateId, new SelectList(Model.Lexicons!.States, "Id", "Name"))
+                @Html.DropDownListFor(m => m.Item!.StateId, new SelectList(Model.Lexicon!.States, "Id", "Name"))
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.ParentId">Parent</label>
+                @Html.DropDownListFor(m => m.Item!.ParentId, new SelectList(Model.Items, "Id", "Name"))
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

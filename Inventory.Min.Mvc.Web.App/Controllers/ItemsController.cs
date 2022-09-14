@@ -46,11 +46,12 @@ public class ItemsController
     // GET: Items/Create
     public async Task<IActionResult> Create()
     {
-        var fullModel = new ItemFullVM();
-        fullModel.Item = new ItemVM();
+        var model = new ItemCreateVM();
+        model.Item = new ItemVM();
         var client = api.GetClinet();
-        fullModel.Lexicons = await api.GetLexicinsAsync(client);
-        return View(fullModel);
+        model.Lexicon = await api.GetLexicinsAsync(client);
+        model.Items = await api.GetSmallItemsAsync(client);
+        return View(model);
     }
 
     // POST: Items/Create

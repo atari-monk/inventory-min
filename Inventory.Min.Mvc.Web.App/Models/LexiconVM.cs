@@ -1,6 +1,6 @@
 namespace Inventory.Min.Mvc.Web.App.Models;
 
-public class LexiconsVM
+public class LexiconVM
 {
     public List<CategoryVM>? Categories { get; set; }
     public List<CurrencyVM>? Currencies { get; set; }
