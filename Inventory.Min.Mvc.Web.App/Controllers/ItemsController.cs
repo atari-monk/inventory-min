@@ -107,9 +107,11 @@ public class ItemsController
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] ItemVM itemVM)
+    public async Task<IActionResult> Edit(int id
+        , [Bind("Id,Name,Description,InitialCount,CurrentCount,CategoryId,PurchaseDate,CurrencyId,PurchasePrice,SellPrice,ImagePath,LengthUnitId,Length,Heigth,Depth,Diameter,VolumeUnitId,Volume,Mass,MassUnitId,TagId,StateId,ParentId")]
+            ItemVM item)
     {
-        if (id != itemVM.Id)
+        if (id != item?.Id)
         {
             return NotFound();
         }
@@ -119,11 +121,11 @@ public class ItemsController
             try
             {
                 var client = api.GetClinet();
-                await api.UpdateItemAsync(client, itemVM);
+                await api.UpdateItemAsync(client, item);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (await ItemVMExists(itemVM.Id) == false)
+                if (await ItemVMExists(item.Id) == false)
                 {
                     return NotFound();
                 }
@@ -134,7 +136,7 @@ public class ItemsController
             }
             return RedirectToAction(nameof(Index));
         }
-        return View(itemVM);
+        return View(item);
     }
 
     // GET: Items/Delete/5

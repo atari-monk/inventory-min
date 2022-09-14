@@ -24,20 +24,80 @@
                 <span asp-validation-for="Item!.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Item!.InitialCount" class="control-label"></label>
+                <input asp-for="Item!.InitialCount" class="form-control" />
+                <span asp-validation-for="Item!.InitialCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.CurrentCount" class="control-label"></label>
+                <input asp-for="Item!.CurrentCount" class="form-control" />
+                <span asp-validation-for="Item!.CurrentCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Item!.CategoryId">Category</label>
                 @Html.DropDownListFor(m => m.Item!.CategoryId, new SelectList(Model.Lexicons!.Categories, "Id", "Name"))
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.PurchaseDate" class="control-label"></label>
+                <input asp-for="Item!.PurchaseDate" class="form-control" />
+                <span asp-validation-for="Item!.PurchaseDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Item!.CurrencyId">Currency</label>
                 @Html.DropDownListFor(m => m.Item!.CurrencyId, new SelectList(Model.Lexicons!.Currencies, "Id", "Name"))
             </div>
             <div class="form-group">
+                <label asp-for="Item!.PurchasePrice" class="control-label"></label>
+                <input asp-for="Item!.PurchasePrice" class="form-control" />
+                <span asp-validation-for="Item!.PurchasePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.SellPrice" class="control-label"></label>
+                <input asp-for="Item!.SellPrice" class="form-control" />
+                <span asp-validation-for="Item!.SellPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.ImagePath" class="control-label"></label>
+                <input asp-for="Item!.ImagePath" class="form-control" />
+                <span asp-validation-for="Item!.ImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Item!.LengthUnitId">Length Unit</label>
                 @Html.DropDownListFor(m => m.Item!.LengthUnitId, new SelectList(Model.Lexicons!.Units, "Id", "Name"))
             </div>
             <div class="form-group">
+                <label asp-for="Item!.Length" class="control-label"></label>
+                <input asp-for="Item!.Length" class="form-control" />
+                <span asp-validation-for="Item!.Length" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.Heigth" class="control-label"></label>
+                <input asp-for="Item!.Heigth" class="form-control" />
+                <span asp-validation-for="Item!.Heigth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.Depth" class="control-label"></label>
+                <input asp-for="Item!.Depth" class="form-control" />
+                <span asp-validation-for="Item!.Depth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.Diameter" class="control-label"></label>
+                <input asp-for="Item!.Diameter" class="form-control" />
+                <span asp-validation-for="Item!.Diameter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Item!.VolumeUnitId">Volume Unit</label>
                 @Html.DropDownListFor(m => m.Item!.VolumeUnitId, new SelectList(Model.Lexicons!.Units, "Id", "Name"))
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.Volume" class="control-label"></label>
+                <input asp-for="Item!.Volume" class="form-control" />
+                <span asp-validation-for="Item!.Volume" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item!.Mass" class="control-label"></label>
+                <input asp-for="Item!.Mass" class="form-control" />
+                <span asp-validation-for="Item!.Mass" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Item!.MassUnitId">Mass Unit</label>
