@@ -39,8 +39,8 @@ public class ItemsController
         {
             return NotFound();
         }
-        var fullItem = new ItemFullVM{ Item = item, Lexicons = lexicons };
-        return View(fullItem);
+        var model = new ItemDetailVM{ Item = item, Lexicon = lexicons };
+        return View(model);
     }
 
     // GET: Items/Create

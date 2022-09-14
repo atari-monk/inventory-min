@@ -1,5 +1,5 @@
 @using Inventory.Min.Data
-@model Inventory.Min.Mvc.Web.App.Models.ItemFullVM
+@model Inventory.Min.Mvc.Web.App.Models.ItemDetailVM
 
 @{
     ViewData["Title"] = "Details";
@@ -39,7 +39,7 @@
             @Html.Label(nameof(Item.Category))
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Lexicons!.Categories!.FirstOrDefault(i=>i.Id == model.Item!.CategoryId)!.Name)
+            @Html.DisplayFor(model => model.Lexicon!.Categories!.FirstOrDefault(i=>i.Id == model.Item!.CategoryId)!.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Item!.PurchaseDate)
@@ -51,7 +51,7 @@
             @Html.Label(nameof(Item.Currency))
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Lexicons!.Currencies!.FirstOrDefault(i=>i.Id == model.Item!.CurrencyId)!.Name)
+            @Html.DisplayFor(model => model.Lexicon!.Currencies!.FirstOrDefault(i=>i.Id == model.Item!.CurrencyId)!.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Item!.PurchasePrice)
@@ -75,7 +75,7 @@
             @Html.Label("Length Unit")
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Lexicons!.Units!.FirstOrDefault(i=>i.Id == model.Item!.LengthUnitId)!.Name)
+            @Html.DisplayFor(model => model.Lexicon!.Units!.FirstOrDefault(i=>i.Id == model.Item!.LengthUnitId)!.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Item!.Length)
@@ -105,7 +105,7 @@
             @Html.Label("Volume Unit")
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Lexicons!.Units!.FirstOrDefault(i=>i.Id == model.Item!.VolumeUnitId)!.Name)
+            @Html.DisplayFor(model => model.Lexicon!.Units!.FirstOrDefault(i=>i.Id == model.Item!.VolumeUnitId)!.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Item!.Volume)
@@ -123,19 +123,25 @@
             @Html.Label("Mass Unit")
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Lexicons!.Units!.FirstOrDefault(i=>i.Id == model.Item!.MassUnitId)!.Name)
+            @Html.DisplayFor(model => model.Lexicon!.Units!.FirstOrDefault(i=>i.Id == model.Item!.MassUnitId)!.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.Label("Tag")
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Lexicons!.Tags!.FirstOrDefault(i=>i.Id == model.Item!.TagId)!.Name)
+            @Html.DisplayFor(model => model.Lexicon!.Tags!.FirstOrDefault(i=>i.Id == model.Item!.TagId)!.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.Label("State")
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Lexicons!.States!.FirstOrDefault(i=>i.Id == model.Item!.StateId)!.Name)
+            @Html.DisplayFor(model => model.Lexicon!.States!.FirstOrDefault(i=>i.Id == model.Item!.StateId)!.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.Label("Parent")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Item!.ParentName)
         </dd>
     </dl>
 </div>

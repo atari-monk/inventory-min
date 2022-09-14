@@ -62,6 +62,18 @@ public abstract class ApiClient
         return item;
     }
 
+    public async Task<ItemSmallVM> GetSmallItemAsync(HttpClient client, int? id)
+    {
+        ItemSmallVM? itemVM = default;
+        var item = await client.GetAsync("api/items/" + id);
+        if(item.IsSuccessStatusCode)
+        {
+            var result = item.Content.ReadAsStringAsync().Result;
+            itemVM = JsonConvert.DeserializeObject<ItemSmallVM>(result);
+        }
+        return itemVM!;
+    }
+
     public async Task<ItemVM> GetItemAsync(HttpClient client, int? id)
     {
         ItemVM? itemVM = default;
@@ -70,6 +82,11 @@ public abstract class ApiClient
         {
             var result = item.Content.ReadAsStringAsync().Result;
             itemVM = JsonConvert.DeserializeObject<ItemVM>(result);
+            if (itemVM?.ParentId != null)
+            {
+                var parent = await GetSmallItemAsync(client, itemVM.ParentId);
+                itemVM.ParentName = parent.Name;
+            }
         }
         return itemVM!;
     }
