@@ -99,10 +99,11 @@ public class ItemsController
         {
             return NotFound();
         }
-        var fullModel = new ItemFullVM();
-        fullModel.Item = item;
-        fullModel.Lexicons = await api.GetLexicinsAsync(client);
-        return View(fullModel);
+        var model = new ItemEditVM();
+        model.Item = item;
+        model.Lexicon = await api.GetLexicinsAsync(client);
+        model.Items = await api.GetSmallItemsAsync(client);
+        return View(model);
     }
 
     // POST: Items/Edit/5
