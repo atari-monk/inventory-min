@@ -7,6 +7,7 @@ public interface IApiClient
 {
     HttpClient GetClinet(bool ishttps = true);
     Task<List<ItemVM>> GetItemsAsync(HttpClient client);
+    Task<List<ItemVM>> GetRelatedItemsAsync(HttpClient client, int? parentId);
     Task<List<ItemSmallVM>> GetSmallItemsAsync(HttpClient client);
     Task<ItemVM> GetItemAsync(HttpClient client, int? id);
     Task<Uri> CreateItemAsync(HttpClient client, ItemVM item);

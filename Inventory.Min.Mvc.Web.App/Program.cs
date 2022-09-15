@@ -27,5 +27,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Items}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "relatedItems",
+    pattern: "{controller=RelatedItems}/{action=Related}/{id?}");
 
 app.Run();

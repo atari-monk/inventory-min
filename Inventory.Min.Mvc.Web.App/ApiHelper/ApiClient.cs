@@ -31,6 +31,37 @@ public abstract class ApiClient
         return items!;
     }
 
+    public async Task<List<ItemVM>> GetRelatedItemsAsync(HttpClient client, int? parentId)
+    {
+        var items = await GetItemsAsync(client);
+        var relatedItems = new List<ItemVM>();
+        var parent = items.FirstOrDefault(i => i.Id == parentId);
+        if (parent == null)
+        {
+            return relatedItems;
+        }
+        relatedItems.Add(parent);
+        var lvl1 = GetRelated(parentId, items);
+        foreach (var item in lvl1)
+        {
+            relatedItems.Add(item);
+            var lvl2 = GetRelated(item.Id, items);
+            relatedItems.AddRange(lvl2);
+        }
+        return relatedItems;
+    }
+
+    private static List<ItemVM> GetRelated(int? parentId, List<ItemVM> items)
+    {
+        var related = new List<ItemVM>();
+        foreach (var item in items)
+        {
+            if (item.ParentId == parentId)
+                related.Add(item);
+        }
+        return related;
+    }
+
     public async Task<List<ItemSmallVM>> GetSmallItemsAsync(HttpClient client)
     {
         var items = new List<ItemSmallVM>();
