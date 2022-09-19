@@ -15,6 +15,28 @@ public class ItemController
         this.api = api;
     }
 
+    public async Task<IActionResult> Items()
+    {
+        var client = api.GetClinet();
+        var fullModel = new ItemsFullVM();
+        fullModel.Items = await api.GetItemsAsync(client);
+        fullModel.Categories = await api.GetCategoriesAsync(client);
+        fullModel.Currencies = await api.GetCurrenciesAsync(client);
+        fullModel.States = await api.GetStatesAsync(client);
+        fullModel.Tags = await api.GetTagsAsync(client);
+        fullModel.Units = await api.GetUnitsAsync(client);
+        return View(fullModel);
+    }
+
+    public async Task<IActionResult> Related(int? id)
+    {
+        var client = api.GetClinet();
+        var model = new RelatedItemsVM();
+        model.Items = await api.GetRelatedItemsAsync(client, id);
+        model.Lexicon = await api.GetLexicinsAsync(client);
+        return View(model);
+    }
+
     public async Task<IActionResult> ItemsMega()
     {
         var client = api.GetClinet();

@@ -16,3 +16,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.mytable {
+    font-size: 18px;
+}
+
+.myrow {
+    font-size: 18px;
+}

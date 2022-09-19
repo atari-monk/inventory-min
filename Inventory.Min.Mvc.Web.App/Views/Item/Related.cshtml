@@ -1,0 +1,63 @@
+@model Inventory.Min.Mvc.Web.App.Models.RelatedItemsVM
+
+@{
+    ViewData["Title"] = "Item and related";
+}
+
+<h1>Related Items</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table mytable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName(nameof(ItemVM.Id))
+            </th>
+            <th>
+                @Html.DisplayName(nameof(ItemVM.Name))
+            </th>
+            <th>
+                @Html.DisplayName(nameof(ItemVM.Description))
+            </th>
+            <th>
+                @Html.Raw("State")
+            </th>
+            <th>
+                @Html.Raw("Parent")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items!)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.Lexicon!.States!.FirstOrDefault(c => c.Id ==
+                item.StateId)!.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParentName)
+                </td>
+                <td>
+                    <a asp-action="Related" asp-route-id="@item.Id">Related</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
