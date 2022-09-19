@@ -5,18 +5,17 @@ using System.Diagnostics;
 
 namespace Inventory.Min.Mvc.Web.App.Controllers;
 
-public class ItemsController
+public class ItemController
     : Controller
 {
     private readonly IApiClient api;
 
-    public ItemsController(IApiClient api)
+    public ItemController(IApiClient api)
     {
         this.api = api;
     }
 
-    // GET: Items
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> ItemsMega()
     {
         var client = api.GetClinet();
         var fullModel = new ItemsFullVM();
@@ -27,6 +26,15 @@ public class ItemsController
         fullModel.Tags = await api.GetTagsAsync(client);
         fullModel.Units = await api.GetUnitsAsync(client);
         return View(fullModel);
+    }
+
+    public async Task<IActionResult> RelatedMega(int? id)
+    {
+        var client = api.GetClinet();
+        var model = new RelatedItemsVM();
+        model.Items = await api.GetRelatedItemsAsync(client, id);
+        model.Lexicon = await api.GetLexicinsAsync(client);
+        return View(model);
     }
 
     // GET: Items/Details/5

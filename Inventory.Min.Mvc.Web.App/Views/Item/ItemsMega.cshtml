@@ -1,10 +1,10 @@
-@model Inventory.Min.Mvc.Web.App.Models.RelatedItemsVM
+@model Inventory.Min.Mvc.Web.App.Models.ItemsFullVM
 
 @{
-    ViewData["Title"] = "Item and related";
+    ViewData["Title"] = "All Items";
 }
 
-<h1>Related Items</h1>
+<h1>Items</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -105,15 +105,13 @@
                     @Html.DisplayFor(modelItem => item.CurrentCount)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => modelItem.Lexicon!.Categories!.FirstOrDefault(c => c.Id ==
-                item.CategoryId)!.Name)
+                    @Html.DisplayFor(modelItem => modelItem.Categories!.FirstOrDefault(c => c.Id == item.CategoryId)!.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.PurchaseDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => modelItem.Lexicon!.Currencies!.FirstOrDefault(c => c.Id ==
-                item.CurrencyId)!.Name)
+                    @Html.DisplayFor(modelItem => modelItem.Currencies!.FirstOrDefault(c => c.Id == item.CurrencyId)!.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.PurchasePrice)
@@ -125,8 +123,7 @@
                     @Html.DisplayFor(modelItem => item.ImagePath17)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => modelItem.Lexicon!.Units!.FirstOrDefault(c => c.Id ==
-                item.LengthUnitId)!.Name)
+                    @Html.DisplayFor(modelItem => modelItem.Units!.FirstOrDefault(c => c.Id == item.LengthUnitId)!.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Length)
@@ -141,8 +138,7 @@
                     @Html.DisplayFor(modelItem => item.Diameter)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => modelItem.Lexicon!.Units!.FirstOrDefault(c => c.Id ==
-                item.VolumeUnitId)!.Name)
+                    @Html.DisplayFor(modelItem => modelItem.Units!.FirstOrDefault(c => c.Id == item.VolumeUnitId)!.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Volume)
@@ -151,21 +147,19 @@
                     @Html.DisplayFor(modelItem => item.Mass)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => modelItem.Lexicon!.Units!.FirstOrDefault(c => c.Id ==
-                item.MassUnitId)!.Name)
+                    @Html.DisplayFor(modelItem => modelItem.Units!.FirstOrDefault(c => c.Id == item.MassUnitId)!.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => modelItem.Lexicon!.Tags!.FirstOrDefault(c => c.Id == item.TagId)!.Name)
+                    @Html.DisplayFor(modelItem => modelItem.Tags!.FirstOrDefault(c => c.Id == item.TagId)!.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => modelItem.Lexicon!.States!.FirstOrDefault(c => c.Id ==
-                item.StateId)!.Name)
+                    @Html.DisplayFor(modelItem => modelItem.States!.FirstOrDefault(c => c.Id == item.StateId)!.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ParentName)
                 </td>
                 <td>
-                    <a asp-controller="RelatedItems" asp-action="Related" asp-route-id="@item.Id">Related</a>
+                    <a asp-action="RelatedMega" asp-route-id="@item.Id">Related</a>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
