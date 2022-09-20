@@ -20,13 +20,10 @@
                 @Html.DisplayName(nameof(ItemVM.Name))
             </th>
             <th>
-                @Html.DisplayName(nameof(ItemVM.Description))
-            </th>
-            <th>
-                @Html.Raw("State")
-            </th>
-            <th>
                 @Html.Raw("Parent")
+            </th>
+            <th>
+                @Html.DisplayName(nameof(ItemVM.Description))
             </th>
             <th></th>
         </tr>
@@ -42,18 +39,15 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => modelItem.States!.FirstOrDefault(c => c.Id == item.StateId)!.Name)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.ParentName)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
                     <a asp-action="Related" asp-route-id="@item.Id">Related</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
