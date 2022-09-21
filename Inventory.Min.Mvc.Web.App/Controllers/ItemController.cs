@@ -9,6 +9,7 @@ public class ItemController
     : Controller
 {
     private readonly IApiClient api;
+    private readonly ItemSmallVM emptyItem = new ItemSmallVM { Id = 0, Name = ""};
 
     public ItemController(IApiClient api)
     {
@@ -19,7 +20,7 @@ public class ItemController
     {
         var client = api.GetClinet();
         var fullModel = new ItemsFullVM();
-        fullModel.Items = await api.GetItemsAsync(client);
+        fullModel.Items = await api.GetItemsAsync(client, 4);
         fullModel.Categories = await api.GetCategoriesAsync(client);
         fullModel.Currencies = await api.GetCurrenciesAsync(client);
         fullModel.States = await api.GetStatesAsync(client);
@@ -59,7 +60,6 @@ public class ItemController
         return View(model);
     }
 
-    // GET: Items/Details/5
     public async Task<IActionResult> Details(int? id)
     {
         var client = api.GetClinet();
@@ -73,7 +73,6 @@ public class ItemController
         return View(model);
     }
 
-    // GET: Items/Create
     public async Task<IActionResult> Create()
     {
         var model = new ItemCreateVM();
@@ -81,44 +80,25 @@ public class ItemController
         var client = api.GetClinet();
         model.Lexicon = await api.GetLexicinsAsync(client);
         model.Items = await api.GetSmallItemsAsync(client);
+        model.Items.Insert(0, emptyItem);
         return View(model);
     }
 
-    // POST: Items/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(ItemFullVM itemContext)
     {
-        // if (ModelState.IsValid == false)
-        //     return View(itemVM);
-        // var client = api.GetClinet();
-        // await api.CreateItemAsync(client, itemVM);
-        // return RedirectToAction(nameof(Index));
-
         if (ModelState.IsValid == false)
             return View(itemContext.Item);
+        if(itemContext.Item?.ParentId == 0) 
+            itemContext.Item.ParentId = null;
         var client = api.GetClinet();
         await api.CreateItemAsync(client, itemContext.Item!);
         return RedirectToAction(nameof(Index));
     }
 
-    // GET: Items/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
-        // if (id == null)
-        // {
-        //     return NotFound();
-        // }
-        // var client = api.GetClinet();
-        // var item = await api.GetItemAsync(client, id);
-        // if (item == null)
-        // {
-        //     return NotFound();
-        // }
-        // return View(item);
-
         if (id == null)
         {
             return NotFound();
@@ -133,12 +113,10 @@ public class ItemController
         model.Item = item;
         model.Lexicon = await api.GetLexicinsAsync(client);
         model.Items = await api.GetSmallItemsAsync(client);
+        model.Items.Insert(0, emptyItem);
         return View(model);
     }
 
-    // POST: Items/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id
@@ -154,6 +132,8 @@ public class ItemController
         {
             try
             {
+                if(item.ParentId == 0) 
+                    item.ParentId = null;
                 var client = api.GetClinet();
                 await api.UpdateItemAsync(client, item);
             }
@@ -173,7 +153,6 @@ public class ItemController
         return View(item);
     }
 
-    // GET: Items/Delete/5
     public async Task<IActionResult> Delete(int? id)
     {
         if (id == null)
@@ -189,7 +168,6 @@ public class ItemController
         return View(item);
     }
 
-    // POST: Items/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)

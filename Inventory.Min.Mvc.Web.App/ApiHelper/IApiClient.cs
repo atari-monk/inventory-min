@@ -6,6 +6,7 @@ namespace Inventory.Min.Mvc.Web.App;
 public interface IApiClient
 {
     HttpClient GetClinet(bool ishttps = true);
+    Task<List<ItemVM>> GetItemsAsync(HttpClient client, int categoryId);
     Task<List<ItemVM>> GetItemsAsync(HttpClient client);
     Task<List<ItemVM>> GetRelatedItemsAsync(HttpClient client, int? parentId);
     Task<List<ItemSmallVM>> GetSmallItemsAsync(HttpClient client);

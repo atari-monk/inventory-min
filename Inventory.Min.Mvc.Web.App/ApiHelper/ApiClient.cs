@@ -18,6 +18,19 @@ public abstract class ApiClient
         return client;
     }
 
+    public async Task<List<ItemVM>> GetItemsAsync(HttpClient client, int categoryId)
+    {
+        var items = new List<ItemVM>();
+        var response = await client.GetAsync($"api/items/category/{categoryId}");
+        if(response.IsSuccessStatusCode)
+        {
+            var result = response.Content.ReadAsStringAsync().Result;
+            items = JsonConvert.DeserializeObject<List<ItemVM>>(result);
+        }
+        SetParentNames(items!);
+        return items!;
+    }
+
     public async Task<List<ItemVM>> GetItemsAsync(HttpClient client)
     {
         var items = new List<ItemVM>();
@@ -64,21 +77,22 @@ public abstract class ApiClient
 
     public async Task<List<ItemSmallVM>> GetSmallItemsAsync(HttpClient client)
     {
-        var items = new List<ItemSmallVM>();
+        List<ItemSmallVM> items = new();
         var response = await client.GetAsync("api/items");
         if(response.IsSuccessStatusCode)
         {
             var result = response.Content.ReadAsStringAsync().Result;
-            items = JsonConvert.DeserializeObject<List<ItemSmallVM>>(result);
+            items = JsonConvert.DeserializeObject<List<ItemSmallVM>>(result) ?? items;
         }
-        return items!;
+        return items.Where(i => i.CategoryId == 4)?.ToList() ?? items;
     }
 
     private void SetParentNames(List<ItemVM> items)
     {
         foreach (var item in items)
         {
-            item.ParentName = items.FirstOrDefault(p => p.Id == item.ParentId)?.Name;
+            var parent = items.FirstOrDefault(p => p.Id == item.ParentId);
+            item.ParentName = parent?.Name;
         }
     }
 

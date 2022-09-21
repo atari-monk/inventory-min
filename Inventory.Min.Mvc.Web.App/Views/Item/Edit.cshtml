@@ -113,7 +113,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Item!.ParentId">Parent</label>
-                @Html.DropDownListFor(m => m.Item!.ParentId, new SelectList(Model.Items, "Id", "Name"))
+                @Html.DropDownListFor(m => m.Item!.ParentId, new SelectList(Model.Items, "Id", "IdName"))
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

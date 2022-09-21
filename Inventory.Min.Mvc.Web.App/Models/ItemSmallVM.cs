@@ -11,4 +11,8 @@ public class ItemSmallVM
     [Required]
     [MaxLength(NameMax)]
     public string? Name { get; set; }
+
+    public int? CategoryId { get; set; }
+
+    public string? IdName => string.Format("{0}->{1}", Id, Name);
 }
