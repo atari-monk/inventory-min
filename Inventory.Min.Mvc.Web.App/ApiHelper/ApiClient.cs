@@ -18,10 +18,23 @@ public abstract class ApiClient
         return client;
     }
 
-    public async Task<List<ItemVM>> GetItemsAsync(HttpClient client, int categoryId)
+    public async Task<List<ItemVM>> GetItemsInOneCategoryAsync(HttpClient client, int categoryId)
     {
         var items = new List<ItemVM>();
         var response = await client.GetAsync($"api/items/category/{categoryId}");
+        if(response.IsSuccessStatusCode)
+        {
+            var result = response.Content.ReadAsStringAsync().Result;
+            items = JsonConvert.DeserializeObject<List<ItemVM>>(result);
+        }
+        SetParentNames(items!);
+        return items!;
+    }
+
+    public async Task<List<ItemVM>> GetItemsExcludingOneStateAsync(HttpClient client, int stateId)
+    {
+        var items = new List<ItemVM>();
+        var response = await client.GetAsync($"api/items/state/{stateId}");
         if(response.IsSuccessStatusCode)
         {
             var result = response.Content.ReadAsStringAsync().Result;
@@ -73,6 +86,19 @@ public abstract class ApiClient
                 related.Add(item);
         }
         return related;
+    }
+
+    public async Task<List<ItemVM>> GetRelatedItemsExcludingOneStateAsync(HttpClient client, int? parentId, int stateId)
+    {
+        var items = new List<ItemVM>();
+        var response = await client.GetAsync($"api/items/relatedExcludingOneState/{parentId}/{stateId}");
+        if(response.IsSuccessStatusCode)
+        {
+            var result = response.Content.ReadAsStringAsync().Result;
+            items = JsonConvert.DeserializeObject<List<ItemVM>>(result);
+        }
+        SetParentNames(items!);
+        return items!;
     }
 
     public async Task<List<ItemSmallVM>> GetSmallItemsAsync(HttpClient client)

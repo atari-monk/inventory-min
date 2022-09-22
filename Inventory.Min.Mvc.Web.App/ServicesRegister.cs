@@ -1,3 +1,5 @@
+using Inventory.Min.Mvc.Web.App.Controllers;
+
 namespace Inventory.Min.Mvc.Web.App;
 
 public class ServicesRegister
@@ -14,5 +16,6 @@ public class ServicesRegister
         builder.Services.AddOptions();
         builder.Services.Configure<MyApi>(builder.Configuration.GetSection("MyApi"));
         builder.Services.AddScoped<IApiClient, InventoryApi>();
+        builder.Services.AddScoped<IMediator, InventoryMediator>();
     }
 }

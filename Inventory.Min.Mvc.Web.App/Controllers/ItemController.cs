@@ -9,33 +9,25 @@ public class ItemController
     : Controller
 {
     private readonly IApiClient api;
+    private readonly IMediator mediator;
     private readonly ItemSmallVM emptyItem = new ItemSmallVM { Id = 0, Name = ""};
 
-    public ItemController(IApiClient api)
+    public ItemController(
+        IApiClient api,
+        IMediator mediator)
     {
         this.api = api;
+        this.mediator = mediator;
     }
 
     public async Task<IActionResult> Items()
     {
-        var client = api.GetClinet();
-        var fullModel = new ItemsFullVM();
-        fullModel.Items = await api.GetItemsAsync(client, 4);
-        fullModel.Categories = await api.GetCategoriesAsync(client);
-        fullModel.Currencies = await api.GetCurrenciesAsync(client);
-        fullModel.States = await api.GetStatesAsync(client);
-        fullModel.Tags = await api.GetTagsAsync(client);
-        fullModel.Units = await api.GetUnitsAsync(client);
-        return View(fullModel);
+        return View(await mediator.Items(api));
     }
 
     public async Task<IActionResult> Related(int? id)
     {
-        var client = api.GetClinet();
-        var model = new RelatedItemsVM();
-        model.Items = await api.GetRelatedItemsAsync(client, id);
-        model.Lexicon = await api.GetLexicinsAsync(client);
-        return View(model);
+        return View(await mediator.Related(api, id));
     }
 
     public async Task<IActionResult> ItemsMega()

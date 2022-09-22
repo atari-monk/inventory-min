@@ -30,5 +30,8 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "items",
     pattern: "{controller=Item}/{action=Items}/{id?}");
+app.MapControllerRoute(
+    name: "relateditems",
+    pattern: "{controller=Item}/{action=Related}/{id?}");
 
 app.Run();
