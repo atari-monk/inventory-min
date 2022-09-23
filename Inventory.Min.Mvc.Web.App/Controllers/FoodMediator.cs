@@ -8,7 +8,7 @@ public class FoodMediator : IMediator
     {
         var client = api.GetClinet();
         var fullModel = new ItemsFullVM();
-        fullModel.Items = await api.GetItemsInOneCategoryAsync(client, 4);
+        fullModel.Items = await api.GetRootItemsInOneCategoryAsync(client, 4);
         fullModel.Categories = await api.GetCategoriesAsync(client);
         fullModel.Currencies = await api.GetCurrenciesAsync(client);
         fullModel.States = await api.GetStatesAsync(client);

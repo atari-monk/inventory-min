@@ -31,6 +31,19 @@ public abstract class ApiClient
         return items!;
     }
 
+    public async Task<List<ItemVM>> GetRootItemsInOneCategoryAsync(HttpClient client, int categoryId)
+    {
+        var items = new List<ItemVM>();
+        var response = await client.GetAsync($"api/items/rootOfOneCategory/{categoryId}");
+        if(response.IsSuccessStatusCode)
+        {
+            var result = response.Content.ReadAsStringAsync().Result;
+            items = JsonConvert.DeserializeObject<List<ItemVM>>(result);
+        }
+        SetParentNames(items!);
+        return items!;
+    }
+
     public async Task<List<ItemVM>> GetItemsExcludingOneStateAsync(HttpClient client, int stateId)
     {
         var items = new List<ItemVM>();
