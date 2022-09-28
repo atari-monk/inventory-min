@@ -14,7 +14,8 @@ public class ServicesRegister
     public void RegisterServices()
     {
         builder.Services.AddOptions();
-        builder.Services.Configure<MyApi>(builder.Configuration.GetSection("MyApi"));
+        builder.Services.Configure<MyApi>(
+            builder.Configuration.GetSection("MyApi"));
         builder.Services.AddScoped<IApiClient, InventoryApi>();
         builder.Services.AddScoped<IMediator, InventoryMediator>();
     }

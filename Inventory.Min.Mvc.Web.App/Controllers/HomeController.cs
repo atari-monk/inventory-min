@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NET.Core.Web.App.Mvc.Controllers;
 
-public class HomeController : Controller
+public class HomeController 
+    : Controller
 {
     private readonly ILogger<HomeController> _logger;
 

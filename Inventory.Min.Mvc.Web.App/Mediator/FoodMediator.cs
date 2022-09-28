@@ -2,13 +2,14 @@ using Inventory.Min.Mvc.Web.App.Models;
 
 namespace Inventory.Min.Mvc.Web.App.Controllers;
 
-public class InventoryMediator : IMediator
+public class FoodMediator
+    : Mediator
 {
-    public async Task<ItemsFullVM> Items(IApiClient api)
+    public async override Task<ItemsFullVM> Items(IApiClient api)
     {
         var client = api.GetClinet();
         var fullModel = new ItemsFullVM();
-        fullModel.Items = await api.GetItemsAsync(client);
+        fullModel.Items = await api.GetRootItemsInOneCategoryAsync(client, 4);
         fullModel.Categories = await api.GetCategoriesAsync(client);
         fullModel.Currencies = await api.GetCurrenciesAsync(client);
         fullModel.States = await api.GetStatesAsync(client);
@@ -17,11 +18,11 @@ public class InventoryMediator : IMediator
         return fullModel;
     }
 
-    public async Task<RelatedItemsVM> Related(IApiClient api, int? parentId)
+    public async override Task<RelatedItemsVM> Related(IApiClient api, int? parentId)
     {
         var client = api.GetClinet();
         var model = new RelatedItemsVM();
-        model.Items = await api.GetRelatedItemsAsync(client, parentId);
+        model.Items = await api.GetRelatedItemsExcludingOneStateAsync(client, parentId, 3);
         model.Lexicon = await api.GetLexicinsAsync(client);
         return model;
     }
