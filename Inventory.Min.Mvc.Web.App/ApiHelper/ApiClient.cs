@@ -80,6 +80,20 @@ public abstract class ApiClient
             return relatedItems;
         }
         relatedItems.Add(parent);
+        relatedItems.AddRange(GetRelated(parentId, items));
+        return relatedItems;
+    }
+
+    public async Task<List<ItemVM>> GetRelatedItemsOn2LvlsAsync(HttpClient client, int? parentId)
+    {
+        var items = await GetItemsAsync(client);
+        var relatedItems = new List<ItemVM>();
+        var parent = items.FirstOrDefault(i => i.Id == parentId);
+        if (parent == null)
+        {
+            return relatedItems;
+        }
+        relatedItems.Add(parent);
         var lvl1 = GetRelated(parentId, items);
         foreach (var item in lvl1)
         {
@@ -123,7 +137,13 @@ public abstract class ApiClient
             var result = response.Content.ReadAsStringAsync().Result;
             items = JsonConvert.DeserializeObject<List<ItemSmallVM>>(result) ?? items;
         }
-        return items.Where(i => i.CategoryId == 4)?.ToList() ?? items;
+        return items;
+    }
+
+    public async Task<List<ItemSmallVM>> GetSmallItemsAsync(HttpClient client, int categoryId)
+    {
+        var items = await GetSmallItemsAsync(client);
+        return items.Where(i => i.CategoryId == categoryId)?.ToList() ?? items;
     }
 
     private void SetParentNames(List<ItemVM> items)

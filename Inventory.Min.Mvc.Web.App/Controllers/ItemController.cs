@@ -47,7 +47,7 @@ public class ItemController
     {
         var client = api.GetClinet();
         var model = new RelatedItemsVM();
-        model.Items = await api.GetRelatedItemsAsync(client, id);
+        model.Items = await api.GetRelatedItemsOn2LvlsAsync(client, id);
         model.Lexicon = await api.GetLexicinsAsync(client);
         return View(model);
     }
@@ -67,13 +67,7 @@ public class ItemController
 
     public async Task<IActionResult> Create()
     {
-        var model = new ItemCreateVM();
-        model.Item = new ItemVM();
-        var client = api.GetClinet();
-        model.Lexicon = await api.GetLexicinsAsync(client);
-        model.Items = await api.GetSmallItemsAsync(client);
-        model.Items.Insert(0, emptyItem);
-        return View(model);
+        return View(await mediator.Create(api));
     }
 
     [HttpPost]
@@ -101,12 +95,7 @@ public class ItemController
         {
             return NotFound();
         }
-        var model = new ItemEditVM();
-        model.Item = item;
-        model.Lexicon = await api.GetLexicinsAsync(client);
-        model.Items = await api.GetSmallItemsAsync(client);
-        model.Items.Insert(0, emptyItem);
-        return View(model);
+        return View(await mediator.Edit(api, client, item));
     }
 
     [HttpPost]

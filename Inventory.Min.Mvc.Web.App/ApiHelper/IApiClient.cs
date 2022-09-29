@@ -12,7 +12,9 @@ public interface IApiClient
     Task<List<ItemVM>> GetRelatedItemsExcludingOneStateAsync(HttpClient client, int? parentId, int stateId);
     Task<List<ItemVM>> GetItemsAsync(HttpClient client);
     Task<List<ItemVM>> GetRelatedItemsAsync(HttpClient client, int? parentId);
+    Task<List<ItemVM>> GetRelatedItemsOn2LvlsAsync(HttpClient client, int? parentId);
     Task<List<ItemSmallVM>> GetSmallItemsAsync(HttpClient client);
+    Task<List<ItemSmallVM>> GetSmallItemsAsync(HttpClient client, int categoryId);
     Task<ItemVM> GetItemAsync(HttpClient client, int? id);
     Task<Uri> CreateItemAsync(HttpClient client, ItemVM item);
     Task<ItemVM> UpdateItemAsync(HttpClient client, ItemVM item);
