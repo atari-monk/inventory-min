@@ -44,5 +44,11 @@ public class IdentityConfig
             options.AccessDeniedPath = "/Identity/Account/AccessDenied";
             options.SlidingExpiration = true;
         });
+
+        builder.Services.AddAuthorization(options =>
+        {
+            options.AddPolicy("RequireAdministratorRole",
+                policy => policy.RequireRole("Administrator"));
+        });
     }
 }

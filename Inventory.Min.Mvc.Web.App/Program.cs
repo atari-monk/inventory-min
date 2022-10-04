@@ -10,6 +10,7 @@ var connectionString = builder.Configuration.GetConnectionString("IdentityDataCo
 builder.Services.AddDbContext<IdentityDataContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<IdentityDataContext>();
 var identityConfig = new IdentityConfig(builder);
 identityConfig.RegisterServices();
