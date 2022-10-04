@@ -1,0 +1,28 @@
+{
+    Title = Scaffold Identity in ASP.NET Core projects
+    Link = https://learn.microsoft.com/en-us/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-6.0&tabs=visual-studio
+}
+{
+    Title = Introduction to Identity on ASP.NET Core
+    Link = https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-6.0&tabs=netcore-cli
+}
+{
+    Title = Introduction to authorization in ASP.NET Core
+    Link = https://learn.microsoft.com/en-us/aspnet/core/security/authorization/introduction?view=aspnetcore-6.0
+}
+{
+    Title = Simple authorization in ASP.NET Core
+    Link = https://learn.microsoft.com/en-us/aspnet/core/security/authorization/simple?view=aspnetcore-6.0
+}
+{
+    Title = https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles?view=aspnetcore-6.0
+    Link = Role-based authorization in ASP.NET Core
+}
+{
+    Title = Policy-based authorization in ASP.NET Core
+    Link = https://learn.microsoft.com/en-us/aspnet/core/security/authorization/policies?view=aspnetcore-6.0
+}
+{
+    Title = Initial adding admin roles and users to the database for Role-based authorization in the ASP.NET Core 3.1 MVC applications
+    Link = https://romansimuta.com/posts/initial-adding-admin-roles-and-users-to-the-database-for-role-based-authorization-in-the-asp-net-core-mvc-applications/
+}
