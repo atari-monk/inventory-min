@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Inventory.Min.Mvc.Web.App.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Inventory.Min.Mvc.Web.App.Controllers;
 
+[Authorize]
 public class ItemController
     : Controller
 {
@@ -65,11 +67,13 @@ public class ItemController
         return View(model);
     }
 
+    [Authorize(Policy = "RequireAdministratorRole")]
     public async Task<IActionResult> Create()
     {
         return View(await mediator.Create(api));
     }
 
+    [Authorize(Policy = "RequireAdministratorRole")]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(ItemFullVM itemContext)
@@ -83,6 +87,7 @@ public class ItemController
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Policy = "RequireAdministratorRole")]
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null)
@@ -98,6 +103,7 @@ public class ItemController
         return View(await mediator.Edit(api, client, item));
     }
 
+    [Authorize(Policy = "RequireAdministratorRole")]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id
@@ -134,6 +140,7 @@ public class ItemController
         return View(item);
     }
 
+    [Authorize(Policy = "RequireAdministratorRole")]
     public async Task<IActionResult> Delete(int? id)
     {
         if (id == null)
@@ -149,6 +156,7 @@ public class ItemController
         return View(item);
     }
 
+    [Authorize(Policy = "RequireAdministratorRole")]
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
