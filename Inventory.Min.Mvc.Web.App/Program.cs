@@ -1,6 +1,16 @@
 using Inventory.Min.Mvc.Web.App;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Inventory.Min.Mvc.Web.App.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("IdentityDataContextConnection") ?? throw new InvalidOperationException("Connection string 'IdentityDataContextConnection' not found.");
+
+builder.Services.AddDbContext<IdentityDataContext>(options =>
+    options.UseSqlServer(connectionString));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<IdentityDataContext>();
 
 // Add services to the container.
 var register = new ServicesRegister(builder);
@@ -21,6 +31,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 
@@ -33,5 +44,6 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "relateditems",
     pattern: "{controller=Item}/{action=Related}/{id?}");
+app.MapRazorPages();
 
 app.Run();
