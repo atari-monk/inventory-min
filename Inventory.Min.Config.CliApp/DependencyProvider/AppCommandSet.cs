@@ -14,10 +14,6 @@ public class AppCommandSet
 
     public override void Register()
     {
-        RegisterReadCommands();
-    }
-
-    private void RegisterReadCommands()
-    {
+        Container.RegisterType<ICommand, IdentitySeedCommand>();
     }
 }

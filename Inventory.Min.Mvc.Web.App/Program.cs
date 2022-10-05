@@ -1,23 +1,13 @@
 using Inventory.Min.Mvc.Web.App;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Inventory.Min.Mvc.Web.App.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("IdentityDataContextConnection") 
-    ?? throw new InvalidOperationException("Connection string 'IdentityDataContextConnection' not found.");
-builder.Services.AddDbContext<IdentityDataContext>(options =>
-    options.UseSqlServer(connectionString));
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<IdentityDataContext>();
 var identityConfig = new IdentityConfig(builder);
 identityConfig.RegisterServices();
 
-// Add services to the container.
 var register = new ServicesRegister(builder);
 register.RegisterServices();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

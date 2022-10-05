@@ -26,3 +26,15 @@
     Title = Initial adding admin roles and users to the database for Role-based authorization in the ASP.NET Core 3.1 MVC applications
     Link = https://romansimuta.com/posts/initial-adding-admin-roles-and-users-to-the-database-for-role-based-authorization-in-the-asp-net-core-mvc-applications/
 }
+{
+    Title = Safe storage of app secrets in development in ASP.NET Core
+    Link = https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows
+}
+{
+    Title = .NET Generic Host in ASP.NET Core
+    Link = https://learn.microsoft.com/en-gb/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-6.0
+}
+{
+    Title = .NET Generic Host
+    Link = https://learn.microsoft.com/en-gb/dotnet/core/extensions/generic-host
+}

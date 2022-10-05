@@ -2,12 +2,20 @@
 
 namespace Inventory.Min.Config.CliApp;
 
-[Command("app")]
+[Command("seed")]
 public class AppCommands
 {
-    [DefaultCommand()]
-    public void AppInfo()
+    private readonly ICommand seedCmd;
+
+    public AppCommands(ICommand seedCmd)
     {
-        Console.WriteLine("App template :)");
+        this.seedCmd = seedCmd;
+    }
+
+    [DefaultCommand()]
+    public void AppInfoAsync()
+    {
+        Console.WriteLine("Seed Identity db");
+        seedCmd.ExecuteAsync();
     }
 }
