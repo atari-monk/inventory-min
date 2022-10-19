@@ -2,12 +2,8 @@ using Inventory.Min.Mvc.Web.App;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var useIdentity = true;
-if(useIdentity)
-{
-    var identityConfig = new IdentityConfig(builder);
-    identityConfig.RegisterServices();
-}
+var identityConfig = new IdentityConfig(builder);
+identityConfig.RegisterServices();
 
 var register = new ServicesRegister(builder);
 register.RegisterServices();
@@ -26,8 +22,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-if(useIdentity)
-    app.UseAuthentication();;
+app.UseAuthentication();
 
 app.UseAuthorization();
 
