@@ -3,7 +3,7 @@ using Inventory.Min.Mvc.Web.App.Models;
 namespace Inventory.Min.Mvc.Web.App.Controllers;
 
 public class FoodMediator
-    : InventoryMediator
+    : DefaultMediator
 {
     public async override Task<ItemCreateVM> Create(IApiClient api)
     {

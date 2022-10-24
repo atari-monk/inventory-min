@@ -3,10 +3,9 @@ using Inventory.Min.Mvc.Web.App.Models;
 namespace Inventory.Min.Mvc.Web.App.Controllers;
 
 public class InventoryMediator
-    : Mediator
+    : DefaultMediator
 {
-    protected readonly ItemSmallVM EmptyItem = 
-        new ItemSmallVM { Id = 0, Name = ""};
+    private const int ContainerCategoryId = 1;
 
     public async override Task<ItemCreateVM> Create(IApiClient api)
     {
@@ -14,7 +13,7 @@ public class InventoryMediator
         model.Item = new ItemVM();
         var client = api.GetClinet();
         model.Lexicon = await api.GetLexicinsAsync(client);
-        model.Items = await api.GetSmallItemsAsync(client);
+        model.Items = await api.GetSmallItemsAsync(client, ContainerCategoryId);
         model.Items.Insert(0, EmptyItem);
         return model;
     }
@@ -24,7 +23,7 @@ public class InventoryMediator
         var model = new ItemEditVM();
         model.Item = item;
         model.Lexicon = await api.GetLexicinsAsync(client);
-        model.Items = await api.GetSmallItemsAsync(client);
+        model.Items = await api.GetSmallItemsAsync(client, ContainerCategoryId);
         model.Items.Insert(0, EmptyItem);
         return model;
     }
@@ -33,21 +32,12 @@ public class InventoryMediator
     {
         var client = api.GetClinet();
         var fullModel = new ItemsFullVM();
-        fullModel.Items = await api.GetItemsAsync(client);
+        fullModel.Items = await api.GetRootItemsInOneCategoryAsync(client, ContainerCategoryId);
         fullModel.Categories = await api.GetCategoriesAsync(client);
         fullModel.Currencies = await api.GetCurrenciesAsync(client);
         fullModel.States = await api.GetStatesAsync(client);
         fullModel.Tags = await api.GetTagsAsync(client);
         fullModel.Units = await api.GetUnitsAsync(client);
         return fullModel;
-    }
-
-    public async override Task<RelatedItemsVM> Related(IApiClient api, int? parentId)
-    {
-        var client = api.GetClinet();
-        var model = new RelatedItemsVM();
-        model.Items = await api.GetRelatedItemsAsync(client, parentId);
-        model.Lexicon = await api.GetLexicinsAsync(client);
-        return model;
     }
 }
