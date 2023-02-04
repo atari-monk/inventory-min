@@ -4,9 +4,12 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <RestoreSources>$(RestoreSources);C:\atari-monk\nugets;https://api.nuget.org/v3/index.json</RestoreSources>
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="ModelHelper" Version="1.0.0" />
+      <PackageReference Include="Inventory.Min.Data" Version="1.0.0" />
       <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.9" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.9" />
@@ -29,20 +32,9 @@
     </ItemGroup>
 
     <ItemGroup>
-		<None Update="appsettings.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
-    
-    <!-- Release refs -->
-    <ItemGroup>
-		<Reference Include="ModelHelper">
-			<HintPath>..\..\..\Build\model-helper\ModelHelper\ModelHelper.dll</HintPath>
-		</Reference>
-	</ItemGroup>
-	<ItemGroup>
-		<Reference Include="Inventory.Min.Data">
-			<HintPath>..\..\..\Build\inventory-min-data\Inventory.Min.Data\Inventory.Min.Data.dll</HintPath>
-		</Reference>
-	</ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+	  </ItemGroup>
+
 </Project>

@@ -4,10 +4,16 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-        <IsPackable>false</IsPackable>
-        <IsPublishable>false</IsPublishable>
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+    <RestoreSources>$(RestoreSources);C:\atari-monk\nugets;https://api.nuget.org/v3/index.json</RestoreSources>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="DIHelper" Version="1.0.0" />
+		<PackageReference Include="Config.Wrapper" Version="1.0.0" />
+		<PackageReference Include="CommandDotNet.Helper" Version="1.0.0" />
+		<PackageReference Include="CommandDotNet.Unity.Helper" Version="1.0.0" />
+		<PackageReference Include="Serilog.Wrapper" Version="1.0.0" />
 		<PackageReference Include="Unity" Version="5.11.10" />
 		<PackageReference Include="CommandDotNet" Version="6.1.0-alpha.repl" />
 		<PackageReference Include="CommandDotNet.DataAnnotations" Version="2.0.3" />
@@ -25,42 +31,7 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
-	<!--Debug refs-->
-	<!-- <ItemGroup>
-		<Reference Include="DIHelper">
-			<HintPath>..\..\di-helper\DIHelper\bin\Debug\net6.0\DIHelper.dll</HintPath>
-		</Reference>
-		<Reference Include="Config.Wrapper">
-			<HintPath>..\..\config-wrapper\Config.Wrapper\bin\Debug\net6.0\Config.Wrapper.dll</HintPath>
-		</Reference>
-		<Reference Include="CommandDotNet.Helper">
-			<HintPath>..\..\commanddotnet-helper\CommandDotNet.Helper\bin\Debug\net6.0\CommandDotNet.Helper.dll</HintPath>
-		</Reference>
-		<Reference Include="CommandDotNet.Unity.Helper">
-			<HintPath>..\..\commanddotnet-helper\CommandDotNet.Unity.Helper\bin\Debug\net6.0\CommandDotNet.Unity.Helper.dll</HintPath>
-		</Reference>
-		<Reference Include="Serilog.Wrapper">
-			<HintPath>..\..\serilog-wrapper\Serilog.Wrapper\bin\Debug\net6.0\Serilog.Wrapper.dll</HintPath>
-		</Reference>
-	</ItemGroup> -->
-	<!--Release refs-->
-	<ItemGroup>
-		<Reference Include="DIHelper">
-			<HintPath>..\..\..\Build\di-helper\DIHelper\DIHelper.dll</HintPath>
-		</Reference>
-		<Reference Include="Config.Wrapper">
-			<HintPath>..\..\..\Build\config-wrapper\Config.Wrapper\Config.Wrapper.dll</HintPath>
-		</Reference>
-		<Reference Include="CommandDotNet.Helper">
-			<HintPath>..\..\..\Build\commanddotnet-helper\CommandDotNet.Helper\CommandDotNet.Helper.dll</HintPath>
-		</Reference>
-		<Reference Include="CommandDotNet.Unity.Helper">
-			<HintPath>..\..\..\Build\commanddotnet-helper\CommandDotNet.Unity.Helper\CommandDotNet.Unity.Helper.dll</HintPath>
-		</Reference>
-		<Reference Include="Serilog.Wrapper">
-			<HintPath>..\..\..\Build\serilog-wrapper\Serilog.Wrapper\Serilog.Wrapper.dll</HintPath>
-		</Reference>
-	</ItemGroup>
+
 	<ItemGroup>
         <ProjectReference Include="..\Inventory.Min.Mvc.Web.App\Inventory.Min.Mvc.Web.App.csproj" />
 	</ItemGroup>
