@@ -1,0 +1,6 @@
+dotnet new sln
+dotnet new classlib -n Inventory.Min.Data
+dotnet sln add Inventory.Min.Data
+//copy part of csproj file from Inventory.Data proj
+//copy proj structure and files from Log.Min.Data proj
+//add entity data by copy part of Inventory.Data entity data
