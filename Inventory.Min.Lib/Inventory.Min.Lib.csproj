@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <RestoreSources>$(RestoreSources);C:\atari-monk\nugets;https://api.nuget.org/v3/index.json</RestoreSources>
     </PropertyGroup>
+    
     <ItemGroup>
 		<PackageReference Include="CRUDCommandHelper" Version="1.0.0" />
 		<PackageReference Include="DotNetExtension" Version="1.0.0" />
@@ -14,11 +15,14 @@
 		<PackageReference Include="CLIHelper" Version="1.0.0" />
 		<PackageReference Include="DataToTable" Version="1.0.0" />
 		<PackageReference Include="ModelHelper" Version="1.0.0" />
-		<PackageReference Include="Inventory.Min.Data" Version="1.0.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
 		<PackageReference Include="Unity" Version="5.11.10" />
 		<PackageReference Include="AutoMapper" Version="11.0.1" />
 		<PackageReference Include="CommandDotNet" Version="6.1.0-alpha.repl" />
 		<PackageReference Include="Serilog" Version="2.11.0" />
 	</ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Inventory.Min.Data\Inventory.Min.Data.csproj" />
+  </ItemGroup>
 </Project>
