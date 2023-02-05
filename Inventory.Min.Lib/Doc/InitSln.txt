@@ -1,0 +1,5 @@
+dotnet new sln
+dotnet new classlib -n Inventory.Min.Lib
+dotnet sln add Inventory.Min.Lib
+//copy csproj from Inventory.Lib
+//copy files fotm Inventory.Lib
