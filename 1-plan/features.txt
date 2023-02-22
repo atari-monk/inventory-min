@@ -1,0 +1,6 @@
+1. Install latest .net runtime. (7.0.102). Update proj files to use latest net runtime.
+2. Update all nugets to latest version.
+3. Minimize number of projects if possible and makes sense.
+4. Refactor very badly written libs.
+5. Pass all tests.
+6. Run and ok all test apps.

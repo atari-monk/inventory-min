@@ -1,55 +1,49 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <IsPackable>false</IsPackable>
-        <IsPublishable>false</IsPublishable>
-    </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="EFCore.Helper" Version="1.0.0" />
-      <PackageReference Include="DIHelper" Version="1.0.0" />
-      <PackageReference Include="CLIHelper" Version="1.0.0" />
-      <PackageReference Include="Config.Wrapper" Version="1.0.0" />
-      <PackageReference Include="ModelHelper" Version="1.0.0" />
-      <PackageReference Include="DataToTable" Version="1.0.0" />
-      <PackageReference Include="CommandDotNet.Helper" Version="1.0.0" />
-      <PackageReference Include="CommandDotNet.IoC.Unity" Version="1.0.0" />
-      <PackageReference Include="CommandDotNet.Unity.Helper" Version="1.0.0" />
-      <PackageReference Include="Serilog.Wrapper" Version="1.0.0" />
-      <PackageReference Include="CRUDCommandHelper" Version="1.0.0" />
-      <PackageReference Include="BetterConsoleTables" Version="2.0.4-rc1" />
-      <PackageReference Include="CommandDotNet.TestTools" Version="5.0.1" />
-      <PackageReference Include="FluentAssertions" Version="5.10.3" />
-      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
-      <PackageReference Include="Moq" Version="4.18.2" />
-      <PackageReference Include="xunit" Version="2.4.1" />
-      <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-          <PrivateAssets>all</PrivateAssets>
-      </PackageReference>
-      <PackageReference Include="coverlet.collector" Version="3.1.0">
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-          <PrivateAssets>all</PrivateAssets>
-      </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup>
-      
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="EFCore.Helper" Version="1.0.0" />
+    <PackageReference Include="DIHelper" Version="1.0.0" />
+    <PackageReference Include="CLIHelper" Version="1.0.0" />
+    <PackageReference Include="Config.Wrapper" Version="1.0.0" />
+    <PackageReference Include="ModelHelper" Version="1.0.0" />
+    <PackageReference Include="DataToTable" Version="1.0.0" />
+    <PackageReference Include="CommandDotNet.Helper" Version="1.0.0" />
+    <PackageReference Include="CommandDotNet.IoC.Unity" Version="1.0.0" />
+    <PackageReference Include="CommandDotNet.Unity.Helper" Version="1.0.0" />
+    <PackageReference Include="Serilog.Wrapper" Version="1.0.0" />
+    <PackageReference Include="CRUDCommandHelper" Version="1.0.0" />
+    <PackageReference Include="BetterConsoleTables" Version="2.0.4-rc1" />
+    <PackageReference Include="CommandDotNet.TestTools" Version="5.0.1" />
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="Moq" Version="4.18.2" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="3.1.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Inventory.Min.Data\Inventory.Min.Data.csproj" />
-      <ProjectReference Include="..\Inventory.Min.Table\Inventory.Min.Table.csproj" />
-      <ProjectReference Include="..\Inventory.Min.Lib\Inventory.Min.Lib.csproj" />
-      <ProjectReference Include="..\Inventory.Min.Cli.App\Inventory.Min.Cli.App.csproj" />
-      <ProjectReference Include="..\Inventory.Min.Cli.App.TestApi\Inventory.Min.Cli.App.TestApi.csproj" />
-      <ProjectReference Include="..\..\my-net-libs\XUnit.Helper\XUnit.Helper.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Update="appsettings.json">
-			  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		  </None>
-	  </ItemGroup>
-
+    <ProjectReference Include="..\Inventory.Min.Table\Inventory.Min.Table.csproj" />
+    <ProjectReference Include="..\Inventory.Min.Lib\Inventory.Min.Lib.csproj" />
+    <ProjectReference Include="..\Inventory.Min.Cli.App\Inventory.Min.Cli.App.csproj" />
+    <ProjectReference Include="..\Inventory.Min.Cli.App.TestApi\Inventory.Min.Cli.App.TestApi.csproj" />
+    <ProjectReference Include="..\..\my-net-libs\XUnit.Helper\XUnit.Helper.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

@@ -1,0 +1,38 @@
+//notes done during consolidating libs form many repos to one
+
+//sln related
+dotnet new sln
+dotnet sln add (ls -r **/*.csproj)
+
+//for virtual folders (normal folders make sln not working) use extension vscode-solution-explorer 
+
+//generate local nuget
+dotnet pack -c Release -o C:\atari-monk\nugets
+
+//add nuget source to proj
+<RestoreSources>$(RestoreSources);C:\atari-monk\nugets;https://api.nuget.org/v3/index.json</RestoreSources>
+
+//add nuget
+dotnet add package name 
+
+//PackageReference
+<PackageReference Include="" Version="1.0.0"/>
+
+//ProjectReference
+<ItemGroup>
+	<ProjectReference Include="..\Log.Data\Log.Data.csproj" />
+</ItemGroup>
+	
+//example of explicit refs in proj, this is beeing replaced by nugets
+<!--Debug refs-->
+<!-- <ItemGroup>
+  <Reference Include="DIHelper">
+    <HintPath>..\..\di-helper\DIHelper\bin\Debug\net6.0\DIHelper.dll</HintPath>
+  </Reference>
+</ItemGroup> -->
+<!--Release refs-->
+<!-- <ItemGroup>
+  <Reference Include="DIHelper">
+    <HintPath>..\..\..\Build\di-helper\DIHelper\DIHelper.dll</HintPath>
+  </Reference>
+</ItemGroup> -->
