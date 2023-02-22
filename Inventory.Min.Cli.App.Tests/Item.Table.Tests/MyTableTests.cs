@@ -41,17 +41,14 @@ public class MyTableTests
     fixture.RunCmd(fixture.Booter, cmd);
     var logger = fixture.Booter.GetLogger();
     logger
-        .Should()
-        .HaveMessage("{0} {1}")
-        .Appearing().Once()
-        .WithProperty("0")
-        .WithValue("Read");
-    logger
-       .Should()
-       .HaveMessage("{0} {1}")
-       .Appearing().Once()
-       .WithProperty("1")
-       .WithValue("Item");
+      .Should()
+      .HaveMessage("{0} {1}")
+      .Appearing().Once()
+      .WithProperty("0")
+      .WithValue("Read")
+      .And
+      .WithProperty("1")
+      .WithValue("Item");
     var output = (IOutMock)fixture.Booter.GetOut();
     fixture.AssertItemCount(fixture.Uow, index + 1);
     var item = fixture.GetItem(fixture.Uow, index);
