@@ -1,109 +1,109 @@
-using d = Inventory.Min.Cli.App.Tests.ItemTests.DataUtil;
+using dataUtil = Inventory.Min.Cli.App.Tests.ItemTests.DataUtil;
 
 namespace Inventory.Min.Cli.App.Tests.ItemTests;
 
 public static class InsertPropsData
 {
-    public static IEnumerable<object[]> InsertProps =>
-        new List<object[]>
-        {
+  public static IEnumerable<object[]> InsertProps =>
+      new List<object[]>
+      {
             new object[]
             {
                 0
-                , d.GetItem()
-                , d.GetInsCmd()
+                , dataUtil.GetItem()
+                , dataUtil.GetInsCmd()
             }
             ,
             new object[]
             {
                 1
-                , d.GetItem((item) => item.Description = d.Description)
-                , d.GetInsCmd("-d", d.Description)
+                , dataUtil.GetItem((item) => item.Description = dataUtil.Description)
+                , dataUtil.GetInsCmd("-d", dataUtil.Description)
             }
             ,
             new object[]
             {
                 2
-                , d.GetItem((item) => item.PurchaseDate = new DateTime(2022, 7, 30))
-                , d.GetInsCmd("-p", "30.07.2022")
+                , dataUtil.GetItem((item) => item.PurchaseDate = new DateTime(2022, 7, 30))
+                , dataUtil.GetInsCmd("-p", "30.07.2022")
             }
             ,
             new object[]
             {
                 3
-                , d.GetItem((item) => item.PurchasePrice = 10)
-                , d.GetInsCmd("-r", "10")
+                , dataUtil.GetItem((item) => item.PurchasePrice = 10)
+                , dataUtil.GetInsCmd("-r", "10")
             }
             ,
             new object[]
             {
                 4
-                , d.GetItem((item) => item.SellPrice = 5)
-                , d.GetInsCmd("-s", "5")
+                , dataUtil.GetItem((item) => item.SellPrice = 5)
+                , dataUtil.GetInsCmd("-s", "5")
             }
             ,
             new object[]
             {
                 5
-                , d.GetItem((item) => item.ImagePath =
+                , dataUtil.GetItem((item) => item.ImagePath =
                     @"C:\atari-monk\Image\Inventory")
-                , d.GetInsCmd("-i", @"C:\atari-monk\Image\Inventory")
+                , dataUtil.GetInsCmd("-i", @"C:\atari-monk\Image\Inventory")
             }
             ,
             new object[]
             {
                 6
-                , d.GetItem((item) => item.Length = 99)
-                , d.GetInsCmd("-l", "99")
+                , dataUtil.GetItem((item) => item.Length = 99)
+                , dataUtil.GetInsCmd("-l", "99")
             }
             ,
             new object[]
             {
                 7
-                , d.GetItem((item) => item.Heigth = 56)
-                , d.GetInsCmd("-e", "56")
+                , dataUtil.GetItem((item) => item.Heigth = 56)
+                , dataUtil.GetInsCmd("-e", "56")
             }
             ,
             new object[]
             {
                 8
-                , d.GetItem((item) => item.Depth = 44)
-                , d.GetInsCmd("-t", "44")
+                , dataUtil.GetItem((item) => item.Depth = 44)
+                , dataUtil.GetInsCmd("-t", "44")
             }
             ,
             new object[]
             {
                 9
-                , d.GetItem((item) => item.Diameter = 66)
-                , d.GetInsCmd("-a", "66")
+                , dataUtil.GetItem((item) => item.Diameter = 66)
+                , dataUtil.GetInsCmd("-a", "66")
             }
             ,
             new object[]
             {
                 10
-                , d.GetItem((item) => item.Volume = 116)
-                , d.GetInsCmd("-v", "116")
+                , dataUtil.GetItem((item) => item.Volume = 116)
+                , dataUtil.GetInsCmd("-v", "116")
             }
             ,
             new object[]
             {
                 11
-                , d.GetItem((item) => item.InitialCount = 66)
-                , d.GetInsCmd("-q", "66")
+                , dataUtil.GetItem((item) => item.InitialCount = 66)
+                , dataUtil.GetInsCmd("-q", "66")
             }
             ,
              new object[]
             {
                 12
-                , d.GetItem((item) => item.CurrentCount = 62)
-                , d.GetInsCmd("--currentCount", "62")
+                , dataUtil.GetItem((item) => item.CurrentCount = 62)
+                , dataUtil.GetInsCmd("--currentCount", "62")
             }
             ,
             new object[]
             {
                 13
-                , d.GetItem((item) => item.Mass = 400)
-                , d.GetInsCmd("-m", "400")
+                , dataUtil.GetItem((item) => item.Mass = 400)
+                , dataUtil.GetInsCmd("-m", "400")
             }
-        };
+      };
 }

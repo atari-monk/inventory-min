@@ -11,7 +11,7 @@
     <PackageReference Include="DataToTable" Version="1.0.0" />
     <PackageReference Include="BetterConsoleTables" Version="2.0.4-rc1" />
     <PackageReference Include="Unity" Version="5.11.10" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Inventory.Min.Data\Inventory.Min.Data.csproj" />

@@ -2,33 +2,33 @@ using System.Globalization;
 using Inventory.Min.BetterTable;
 using Inventory.Min.Data;
 using ModelHelper;
-using d = Inventory.Min.Cli.App.Tests.ItemTests.DataUtil;
+using dataUtil = Inventory.Min.Cli.App.Tests.ItemTests.DataUtil;
 
 namespace Inventory.Min.Cli.App.Tests.ItemTests;
 
 public class VerboseTableData
     : MyTableData
 {
-    private const int InitialCount = 10;
-    private const int CurrentCount = 5;
-    private const string PurchaseDate = "22.08.2022";
-    private const decimal PurchasePrice = 45.56m;
-    private const decimal SellPrice = 13.32m;
-    private const double Length = 65.1;
-    private const double Heigth = 34.6;
-    private const double Depth = 12.3;
-    private const double Diameter =5.6;
-    private const double Volume = 33.4;
-    private const double Mass = 2.7;
-    
-    public new static IEnumerable<object[]> Insert01 =>
-        new List<object[]>
-        {
-            new object[] 
+  private const int InitialCount = 10;
+  private const int CurrentCount = 5;
+  private const string PurchaseDate = "22.08.2022";
+  private const decimal PurchasePrice = 45.56m;
+  private const decimal SellPrice = 13.32m;
+  private const double Length = 65.1;
+  private const double Heigth = 34.6;
+  private const double Depth = 12.3;
+  private const double Diameter = 5.6;
+  private const double Volume = 33.4;
+  private const double Mass = 2.7;
+
+  public new static IEnumerable<object[]> Insert01 =>
+      new List<object[]>
+      {
+            new object[]
             {
                 0
-                , d.GetItem(
-                    (item) => item.Description = d.Description
+                , dataUtil.GetItem(
+                    (item) => item.Description = dataUtil.Description
                     , (item) => item.InitialCount = InitialCount
                     , (item) => item.CurrentCount = CurrentCount
                     , (item) => item.PurchaseDate = new DateTime(2022, 8, 22)
@@ -40,9 +40,9 @@ public class VerboseTableData
                     , (item) => item.Diameter = Diameter
                     , (item) => item.Volume = Volume
                     , (item) => item.Mass = Mass
-                ) 
-                , d.GetInsCmd(
-                    "-d", d.Description
+                )
+                , dataUtil.GetInsCmd(
+                    "-d", dataUtil.Description
                     , "-q", InitialCount.ToString()
                     , "--currentCount", CurrentCount.ToString()
                     , "-p", PurchaseDate
@@ -51,15 +51,15 @@ public class VerboseTableData
                     , "-t", Depth.ToString(), "--diameter", Diameter.ToString()
                     , "-v", Volume.ToString(), "--mass", Mass.ToString())
             }
-        };
+      };
 
-    public new static IEnumerable<object[]> Read01 =>
-        new List<object[]>
-        {
-            new object[] 
+  public new static IEnumerable<object[]> Read01 =>
+      new List<object[]>
+      {
+            new object[]
             {
                 0
-                , d.GetReadCmd("-t", ItemTablesTest.VerboseTest.ToString())
+                , dataUtil.GetReadCmd("-t", ItemTablesTest.VerboseTest.ToString())
                 ,    "┌──────────────┬─────────────────────┬──────────────┬──────────────┬──────────────┬───────────────┬───────────┬────────┬────────┬───────┬──────────┬────────┬──────┐\r\n│"
                 +   $" \u001b[38;2;255;255;255m    {nameof(Item.Name)}    \u001b[0m │"
                 +   $" \u001b[38;2;255;255;255m    {nameof(Item.Description)}    [0m │"
@@ -76,8 +76,8 @@ public class VerboseTableData
                 +   $" [38;2;255;255;255m{nameof(Item.Mass)}[0m │"
                 +    "\r\n"
                 +    "├──────────────┼─────────────────────┼──────────────┼──────────────┼──────────────┼───────────────┼───────────┼────────┼────────┼───────┼──────────┼────────┼──────┤\r\n│"
-                +   $" \u001b[38;2;255;255;255m{d.Name}\u001b[0m │"
-                +   $" \u001b[38;2;255;255;255m{d.Description}[0m │"
+                +   $" \u001b[38;2;255;255;255m{dataUtil.Name}\u001b[0m │"
+                +   $" \u001b[38;2;255;255;255m{dataUtil.Description}[0m │"
                 +   $" [38;2;255;255;255m     {InitialCount}     [0m │"
                 +   $" [38;2;255;255;255m      {CurrentCount}     [0m │"
                 +   $" [38;2;255;255;255m {PurchaseDate} [0m │"
@@ -92,10 +92,10 @@ public class VerboseTableData
                 +    "\r\n"
                 +    "└──────────────┴─────────────────────┴──────────────┴──────────────┴──────────────┴───────────────┴───────────┴────────┴────────┴───────┴──────────┴────────┴──────┘\r\n"
             }
-        };
+      };
 
-    private static object GetPrice(decimal purchasePrice)
-    {
-        return purchasePrice.ToString(Model.MoneyFormat, CultureInfo.GetCultureInfo(Model.PolishCulture));
-    }
+  private static object GetPrice(decimal purchasePrice)
+  {
+    return purchasePrice.ToString(Model.MoneyFormat, CultureInfo.GetCultureInfo(Model.PolishCulture));
+  }
 }

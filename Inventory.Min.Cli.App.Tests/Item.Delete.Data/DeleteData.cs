@@ -1,4 +1,4 @@
-using d = Inventory.Min.Cli.App.Tests.ItemTests.DataUtil;
+using dataUtil = Inventory.Min.Cli.App.Tests.ItemTests.DataUtil;
 
 namespace Inventory.Min.Cli.App.Tests.ItemTests;
 
@@ -9,7 +9,7 @@ public class DeleteData
         {
             new object[] 
             {
-                d.GetInsCmd()
+                dataUtil.GetInsCmd()
             }
         };
 
@@ -18,7 +18,7 @@ public class DeleteData
         {
             new object[] 
             {
-                d.GetDelCmd()
+                dataUtil.GetDelCmd()
             }
         };
 }

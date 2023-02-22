@@ -19,13 +19,13 @@
     <PackageReference Include="CommandDotNet.Unity.Helper" Version="1.0.0" />
     <PackageReference Include="Serilog.Wrapper" Version="1.0.0" />
     <PackageReference Include="CRUDCommandHelper" Version="1.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
-    <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="3.1.0">
+    <PackageReference Include="coverlet.collector" Version="3.2.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -35,7 +35,7 @@
     <ProjectReference Include="..\Inventory.Min.Data\Inventory.Min.Data.csproj" />
     <ProjectReference Include="..\Inventory.Min.Table\Inventory.Min.Table.csproj" />
     <ProjectReference Include="..\Inventory.Min.Lib\Inventory.Min.Lib.csproj" />
-    <ProjectReference Include="..\..\my-net-libs\XUnit.Helper\XUnit.Helper.csproj" />
+    <ProjectReference Include="..\..\net-my-libs\XUnit.Helper\XUnit.Helper.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="appsettings.json">
